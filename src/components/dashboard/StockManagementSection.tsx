@@ -15,10 +15,16 @@ export default function StockManagementSection() {
   return (
     <div className="px-4 py-2">
       <Card>
-        <h2 className="mb-3 text-base font-semibold text-gray-900">Stock Management</h2>
+        <h2 className="pb-3 text-base font-semibold text-gray-900">Stock Management</h2>
+        <hr className="mb-3 border-gray-100" />
         <div className="grid grid-cols-4 gap-x-1 gap-y-3">
           {stockActions.map((action) => (
-            <IconGridButton key={action.label} icon={action.icon} label={action.label} />
+            <IconGridButton
+              key={action.label}
+              icon={action.icon}
+              label={action.label}
+              iconColor="#F04E98"
+            />
           ))}
         </div>
       </Card>

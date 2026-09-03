@@ -5,9 +5,9 @@ interface StatCardProps {
 
 export default function StatCard({ value, label }: StatCardProps) {
   return (
-    <div className="rounded-xl bg-gray-50 px-3 py-3 hover:bg-gray-100 transition-colors">
-      <p className="text-xl font-bold text-gray-900">{value}</p>
-      <p className="mt-0.5 text-xs text-gray-500">{label}</p>
+    <div className="rounded-xl bg-[#F6F6F6] px-3 py-4 text-center hover:bg-gray-100 transition-colors">
+      <p className="text-xl font-bold text-rose-600">{value}</p>
+      <p className="mt-0.5 text-xs text-slate-800">{label}</p>
     </div>
   )
 }

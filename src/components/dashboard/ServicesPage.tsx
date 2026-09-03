@@ -41,7 +41,7 @@ export default function ServicesPage() {
       </div>
       <ServiceGroup title="E-Reload" items={eReloadActions} />
       <ServiceGroup title="Customer Activities" items={customerActivities} iconColor="#3CDBC0" />
-      <ServiceGroup title="Stock Management" items={stockActions} />
+      <ServiceGroup title="Stock Management" items={stockActions} iconColor="#F04E98" />
       <ServiceGroup title="B2B Activities" items={b2bActivities} />
     </div>
   )
