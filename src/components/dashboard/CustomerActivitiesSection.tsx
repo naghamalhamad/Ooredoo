@@ -22,7 +22,12 @@ export default function CustomerActivitiesSection() {
         <h2 className="mb-3 text-base font-semibold text-gray-900">Customer Activities</h2>
         <div className="grid grid-cols-5 gap-x-1 gap-y-3">
           {customerActivities.map((activity) => (
-            <IconGridButton key={activity.label} icon={activity.icon} label={activity.label} />
+            <IconGridButton
+              key={activity.label}
+              icon={activity.icon}
+              label={activity.label}
+              iconColor="#3CDBC0"
+            />
           ))}
         </div>
       </Card>
