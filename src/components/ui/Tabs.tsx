@@ -5,28 +5,35 @@ interface TabsProps {
 }
 
 export default function Tabs({ tabs, active, onChange }: TabsProps) {
+  const activeIndex = Math.max(tabs.indexOf(active), 0)
+
   return (
-    <div role="tablist" className="flex gap-5 border-b border-gray-200">
-      {tabs.map((tab) => {
-        const isActive = tab === active
-        return (
-          <button
-            key={tab}
-            type="button"
-            role="tab"
-            aria-selected={isActive}
-            onClick={() => onChange(tab)}
-            className={`relative pb-2 text-sm font-medium transition-colors ${
-              isActive ? 'text-rose-600' : 'text-gray-400 hover:text-gray-600'
-            }`}
-          >
-            {tab}
-            {isActive && (
-              <span className="absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-rose-600" />
-            )}
-          </button>
-        )
-      })}
+    <div>
+      <div role="tablist" className="flex items-center justify-between">
+        {tabs.map((tab) => {
+          const isActive = tab === active
+          return (
+            <button
+              key={tab}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              onClick={() => onChange(tab)}
+              className={`pb-2 text-base transition-colors ${
+                isActive ? 'font-bold text-gray-900' : 'font-medium text-gray-400 hover:text-gray-600'
+              }`}
+            >
+              {tab}
+            </button>
+          )
+        })}
+      </div>
+      <div className="relative h-1 w-full overflow-hidden rounded-full bg-rose-100">
+        <div
+          className="absolute inset-y-0 rounded-full bg-rose-600 transition-all duration-300"
+          style={{ width: `${100 / tabs.length}%`, left: `${(activeIndex * 100) / tabs.length}%` }}
+        />
+      </div>
     </div>
   )
 }

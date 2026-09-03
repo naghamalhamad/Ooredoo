@@ -37,6 +37,11 @@ export type IconName =
   | 'coin'
   | 'gauge'
   | 'calendar'
+  | 'settings'
+  | 'logout'
+  | 'globe'
+  | 'shield'
+  | 'help'
   | 'more'
 
 interface IconProps {
@@ -323,6 +328,43 @@ export default function Icon({ name, className = 'w-5 h-5' }: IconProps) {
         <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
           <rect x="3" y="5" width="18" height="16" rx="2" />
           <path d="M3 10h18M8 3v4M16 3v4" />
+        </svg>
+      )
+    case 'settings':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <circle cx="12" cy="12" r="3" />
+          <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 8.96 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.56-1.04H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 8.96a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1.04-1.56V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1.04 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V9a1.7 1.7 0 0 0 1.56 1.04H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.56 1.04Z" />
+        </svg>
+      )
+    case 'logout':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          <path d="M16 17l5-5-5-5" />
+          <path d="M21 12H9" />
+        </svg>
+      )
+    case 'globe':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z" />
+        </svg>
+      )
+    case 'shield':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6Z" />
+          <path d="M9 12l2 2 4-4" />
+        </svg>
+      )
+    case 'help':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M9.5 9a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 1.9-2.4 3.5" />
+          <circle cx="12" cy="17" r="0.6" fill="currentColor" />
         </svg>
       )
     case 'more':

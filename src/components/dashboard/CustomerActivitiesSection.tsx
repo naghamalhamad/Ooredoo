@@ -2,7 +2,7 @@ import type { IconName } from '../icons/Icon'
 import Card from '../ui/Card'
 import IconGridButton from '../ui/IconGridButton'
 
-const activities: { icon: IconName; label: string }[] = [
+export const customerActivities: { icon: IconName; label: string }[] = [
   { icon: 'sim', label: 'Prepaid' },
   { icon: 'refresh', label: 'SIM replacement' },
   { icon: 'handshake', label: 'Settlement' },
@@ -21,7 +21,7 @@ export default function CustomerActivitiesSection() {
       <Card>
         <h2 className="mb-3 text-base font-semibold text-gray-900">Customer Activities</h2>
         <div className="grid grid-cols-5 gap-x-1 gap-y-3">
-          {activities.map((activity) => (
+          {customerActivities.map((activity) => (
             <IconGridButton key={activity.label} icon={activity.icon} label={activity.label} />
           ))}
         </div>

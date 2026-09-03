@@ -10,7 +10,7 @@ const walletAccounts = [
   { name: 'Visit', operator: 'Operator', balance: '00.00' },
 ]
 
-const actions: { icon: IconName; label: string }[] = [
+export const eReloadActions: { icon: IconName; label: string }[] = [
   { icon: 'voucher', label: 'E-voucher' },
   { icon: 'history', label: 'History' },
   { icon: 'report', label: 'Report' },
@@ -43,7 +43,7 @@ export default function EReloadSection() {
         </div>
 
         <div className="mt-4 grid grid-cols-4 gap-x-1 gap-y-3">
-          {actions.map((action, i) => (
+          {eReloadActions.map((action, i) => (
             <IconGridButton key={`${action.label}-${i}`} icon={action.icon} label={action.label} />
           ))}
         </div>

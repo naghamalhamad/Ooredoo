@@ -2,7 +2,7 @@ import type { IconName } from '../icons/Icon'
 import Card from '../ui/Card'
 import IconGridButton from '../ui/IconGridButton'
 
-const actions: { icon: IconName; label: string }[] = [
+export const stockActions: { icon: IconName; label: string }[] = [
   { icon: 'box', label: 'Inventory Dashboard' },
   { icon: 'cart', label: 'Sales order' },
   { icon: 'router', label: 'Raw material order' },
@@ -17,7 +17,7 @@ export default function StockManagementSection() {
       <Card>
         <h2 className="mb-3 text-base font-semibold text-gray-900">Stock Management</h2>
         <div className="grid grid-cols-4 gap-x-1 gap-y-3">
-          {actions.map((action) => (
+          {stockActions.map((action) => (
             <IconGridButton key={action.label} icon={action.icon} label={action.label} />
           ))}
         </div>

@@ -1,17 +1,18 @@
 import { useState } from 'react'
 import Card from '../ui/Card'
 import Tabs from '../ui/Tabs'
-import GroupedBarChart from '../ui/GroupedBarChart'
-import Icon from '../icons/Icon'
+import OverviewBarChart from '../ui/OverviewBarChart'
 
 const tabs = ['Prepaid', 'Postpaid', 'Portin', 'Reso']
 
-const seriesByTab: Record<string, { category: string; values: number[] }[]> = {
-  Prepaid: [{ category: '', values: [230, 480, 340] }],
-  Postpaid: [{ category: '', values: [180, 260, 300] }],
-  Portin: [{ category: '', values: [90, 150, 120] }],
-  Reso: [{ category: '', values: [60, 100, 80] }],
+// each tab: [MTD (pink), LMTD (blue), Target (teal)]
+const seriesByTab: Record<string, number[]> = {
+  Prepaid: [120, 500, 110],
+  Postpaid: [90, 340, 150],
+  Portin: [60, 210, 80],
+  Reso: [40, 140, 60],
 }
+const legendColors = ['#2DD4BF', '#EC4899', '#1D3FC4']
 
 export default function OverviewSection() {
   const [activeTab, setActiveTab] = useState('Prepaid')
@@ -22,27 +23,26 @@ export default function OverviewSection() {
         <h2 className="mb-3 text-base font-semibold text-gray-900">Overview</h2>
         <Tabs tabs={tabs} active={activeTab} onChange={setActiveTab} />
 
-        <div className="mt-4">
-          <GroupedBarChart
-            series={[
-              { label: 'Target', color: '#EC4899' },
-              { label: 'MTD', color: '#1E3A8A' },
-              { label: 'YTD', color: '#14B8A6' },
-            ]}
-            data={seriesByTab[activeTab]}
-            maxValue={500}
-          />
+        <div className="mt-4 flex items-center justify-end gap-4">
+          <div className="flex items-center gap-1.5 text-xs text-gray-500">
+            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: legendColors[0] }} />
+            Target
+          </div>
+          <div className="flex items-center gap-1.5 text-xs text-gray-500">
+            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: legendColors[1] }} />
+            MTD
+          </div>
+          <div className="flex items-center gap-1.5 text-xs text-gray-500">
+            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: legendColors[2] }} />
+            LMTD
+          </div>
         </div>
 
-        <div className="mt-3 flex items-center justify-center gap-2 text-xs text-gray-400">
-          <button type="button" aria-label="Previous month" className="hover:text-gray-600">
-            <Icon name="chevronRight" className="h-3 w-3 rotate-180" />
-          </button>
-          <span>January / February 2023</span>
-          <button type="button" aria-label="Next month" className="hover:text-gray-600">
-            <Icon name="chevronRight" className="h-3 w-3" />
-          </button>
+        <div className="mt-6">
+          <OverviewBarChart values={seriesByTab[activeTab]} />
         </div>
+
+        <p className="text-center text-sm text-gray-500">January / February, 2023</p>
       </Card>
     </div>
   )
