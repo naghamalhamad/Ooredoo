@@ -20,7 +20,7 @@ export default function OverviewBarChart({ values }: OverviewBarChartProps) {
             <div key={tick} className="border-t border-gray-100" />
           ))}
         </div>
-        <div className="flex h-56 items-end justify-around gap-4 pb-6">
+        <div className="relative z-10 flex h-56 items-end justify-around gap-4 pb-6">
           {values.map((value, i) => (
             <div
               key={i}
