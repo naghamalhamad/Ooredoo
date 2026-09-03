@@ -1,21 +1,47 @@
 import Card from '../ui/Card'
 import SectionHeader from '../ui/SectionHeader'
+import Icon from '../icons/Icon'
 import VisitCard from './VisitCard'
 
 export default function VisitManagementSection() {
   return (
     <div className="px-4 py-2">
       <Card>
-        <SectionHeader title="Visit Management" actionLabel="See all" />
+        <SectionHeader title="Customer Visit Management" actionLabel="See all" />
         <hr className="mb-3 border-gray-100" />
+
+        <button
+          type="button"
+          className="mb-3 flex w-full items-center gap-3 rounded-lg bg-gray-50 px-3 py-2.5 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+        >
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-50 text-rose-600">
+            <Icon name="gauge" className="h-4 w-4" />
+          </span>
+          <span className="flex-1 text-left text-sm font-medium text-gray-800">Overview Dashboard</span>
+          <Icon name="chevronRight" className="h-4 w-4 text-gray-400" />
+        </button>
+
         <VisitCard
-          visitName="Visit name"
-          visitType="Visit type"
-          startDate="9 Aug, 2023"
-          endDate="18 Aug, 2023"
-          dealerName="Channel member name"
-          dealerCode="Channel member code"
+          visitName="test"
+          startDate="30 Jun"
+          completedCount={0}
+          location="AD DAKHLIYAH · ADAM · Abo Bremah"
         />
+
+        <div className="mt-3 flex flex-col gap-2">
+          <button
+            type="button"
+            className="w-full rounded-full bg-rose-600 py-2.5 text-sm font-semibold text-white hover:bg-rose-700 active:bg-rose-800 transition-colors"
+          >
+            Visit Details
+          </button>
+          <button
+            type="button"
+            className="w-full rounded-full border border-rose-600 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50 active:bg-rose-100 transition-colors"
+          >
+            Create New Visit
+          </button>
+        </div>
       </Card>
     </div>
   )
