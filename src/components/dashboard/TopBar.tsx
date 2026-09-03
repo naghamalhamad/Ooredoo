@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleUser, faTableCellsLarge, faBell } from '@fortawesome/free-solid-svg-icons'
+import { faCircleUser, faQrcode, faBell } from '@fortawesome/free-solid-svg-icons'
 
 interface TopBarProps {
   onProfileClick?: () => void
@@ -8,7 +8,7 @@ interface TopBarProps {
 
 export default function TopBar({ onProfileClick, onNotificationClick }: TopBarProps) {
   return (
-    <div className="bg-rose-600">
+    <div className="bg-[#E4002B]">
       <div className="flex items-center justify-between px-4 pb-1 pt-2 text-sm font-semibold text-white">
         <span>19:02</span>
         <div className="flex items-center gap-1.5">
@@ -40,15 +40,16 @@ export default function TopBar({ onProfileClick, onNotificationClick }: TopBarPr
         </span>
         <div className="flex items-center gap-4">
           <button type="button" className="flex text-white hover:opacity-80 transition-opacity" aria-label="Scan">
-            <FontAwesomeIcon icon={faTableCellsLarge} className="text-lg" />
+            <FontAwesomeIcon icon={faQrcode} className="text-lg" />
           </button>
           <button
             type="button"
             onClick={onNotificationClick}
-            className="flex text-white hover:opacity-80 transition-opacity"
+            className="relative flex text-white hover:opacity-80 transition-opacity"
             aria-label="Notifications"
           >
             <FontAwesomeIcon icon={faBell} className="text-lg" />
+            <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-amber-400" />
           </button>
         </div>
       </div>
