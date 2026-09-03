@@ -15,30 +15,28 @@ interface BottomNavProps {
 
 export default function BottomNav({ active, onChange }: BottomNavProps) {
   return (
-    <nav className="sticky bottom-0 flex items-center justify-around border-t border-gray-100 bg-white px-2 py-2">
-      {navItems.map((item) => {
-        const isActive = item.label === active
-        return (
-          <button
-            key={item.label}
-            type="button"
-            onClick={() => onChange(item.label)}
-            aria-label={item.label}
-            aria-current={isActive}
-            className={`flex flex-col items-center gap-0.5 rounded-lg px-4 py-1.5 transition-colors ${
-              isActive ? 'text-white' : 'text-gray-400 hover:text-gray-600'
-            }`}
-          >
-            <span
-              className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
-                isActive ? 'bg-rose-600' : 'hover:bg-gray-100'
-              }`}
+    <nav className="sticky bottom-0 border-t border-gray-100 bg-white">
+      <div className="flex items-stretch justify-around">
+        {navItems.map((item) => {
+          const isActive = item.label === active
+          return (
+            <button
+              key={item.label}
+              type="button"
+              onClick={() => onChange(item.label)}
+              aria-label={item.label}
+              aria-current={isActive}
+              className="flex flex-1 flex-col items-center gap-2 py-3 transition-colors"
             >
-              <Icon name={item.icon} className="h-4 w-4" />
-            </span>
-          </button>
-        )
-      })}
+              <span className={`h-1 w-10 rounded-full ${isActive ? 'bg-rose-600' : 'bg-transparent'}`} />
+              <Icon
+                name={item.icon}
+                className={`h-6 w-6 transition-colors ${isActive ? 'text-rose-600' : 'text-gray-400'}`}
+              />
+            </button>
+          )
+        })}
+      </div>
     </nav>
   )
 }
