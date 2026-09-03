@@ -38,7 +38,7 @@ export default function KPIsSection() {
   return (
     <div className="px-4 py-2">
       <Card>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between pb-3">
           <h2 className="text-base font-semibold text-gray-900">KPIs</h2>
           <div className="flex items-center gap-3 text-[11px] text-gray-400">
             <span className="flex items-center gap-1">
@@ -49,6 +49,7 @@ export default function KPIsSection() {
             </span>
           </div>
         </div>
+        <hr className="border-gray-100" />
 
         <div className="mt-2">
           <Tabs tabs={tabs} active={activeTab} onChange={setActiveTab} />

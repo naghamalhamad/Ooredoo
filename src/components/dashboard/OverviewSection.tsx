@@ -20,7 +20,8 @@ export default function OverviewSection() {
   return (
     <div className="px-4 py-2">
       <Card>
-        <h2 className="mb-3 text-base font-semibold text-gray-900">Overview</h2>
+        <h2 className="pb-3 text-base font-semibold text-gray-900">Overview</h2>
+        <hr className="mb-3 border-gray-100" />
         <Tabs tabs={tabs} active={activeTab} onChange={setActiveTab} />
 
         <div className="mt-4 flex items-center justify-end gap-4">

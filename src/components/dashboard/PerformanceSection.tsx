@@ -7,6 +7,7 @@ export default function PerformanceSection() {
     <div className="px-4 py-2">
       <Card>
         <SectionHeader title="Performance" />
+        <hr className="mb-3 border-gray-100" />
         <div className="flex items-start justify-between">
           <UsageMeter
             value={5}

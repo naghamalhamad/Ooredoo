@@ -13,7 +13,8 @@ export default function B2BActivitiesSection() {
   return (
     <div className="px-4 py-2">
       <Card>
-        <h2 className="mb-3 text-base font-semibold text-gray-900">B2B Activities</h2>
+        <h2 className="pb-3 text-base font-semibold text-gray-900">B2B Activities</h2>
+        <hr className="mb-3 border-gray-100" />
         <div className="grid grid-cols-4 gap-x-1 gap-y-3">
           {b2bActivities.map((activity) => (
             <IconGridButton key={activity.label} icon={activity.icon} label={activity.label} />

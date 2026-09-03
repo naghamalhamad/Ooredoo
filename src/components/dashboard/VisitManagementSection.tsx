@@ -7,6 +7,7 @@ export default function VisitManagementSection() {
     <div className="px-4 py-2">
       <Card>
         <SectionHeader title="Visit Management" actionLabel="See all" />
+        <hr className="mb-3 border-gray-100" />
         <VisitCard
           visitName="Visit name"
           visitType="Visit type"
