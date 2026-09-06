@@ -6,9 +6,16 @@ import VisitCard from './VisitCard'
 interface VisitManagementSectionProps {
   onCreateNewVisit?: () => void
   onSeeAll?: () => void
+  onOverviewDashboard?: () => void
+  onViewDetails?: () => void
 }
 
-export default function VisitManagementSection({ onCreateNewVisit, onSeeAll }: VisitManagementSectionProps) {
+export default function VisitManagementSection({
+  onCreateNewVisit,
+  onSeeAll,
+  onOverviewDashboard,
+  onViewDetails,
+}: VisitManagementSectionProps) {
   return (
     <div className="px-4 py-2">
       <Card>
@@ -17,6 +24,7 @@ export default function VisitManagementSection({ onCreateNewVisit, onSeeAll }: V
 
         <button
           type="button"
+          onClick={onOverviewDashboard}
           className="mb-3 flex w-full items-center gap-3 rounded-lg bg-gray-50 px-3 py-2.5 hover:bg-gray-100 active:bg-gray-200 transition-colors"
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-50 text-rose-600">
@@ -38,6 +46,7 @@ export default function VisitManagementSection({ onCreateNewVisit, onSeeAll }: V
         <div className="mt-3 flex flex-col gap-2">
           <button
             type="button"
+            onClick={onViewDetails}
             className="w-full rounded-full bg-rose-600 py-2.5 text-sm font-semibold text-white hover:bg-rose-700 active:bg-rose-800 transition-colors"
           >
             Visit Details

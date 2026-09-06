@@ -100,3 +100,19 @@ export const areaVisits: AreaVisit[] = [
     homeVisits: [],
   },
 ]
+
+export const homeAreaVisit: AreaVisit = {
+  name: 'North Muscat Coverage',
+  status: 'Active',
+  title: 'North Muscat Coverage',
+  visitNumber: 'visit number',
+  channelType: 'Dealer',
+  surveyType: 'Survey Type',
+  dateFrom: '9-8-2023',
+  dateTo: '10-8-2023',
+  region: 'Region',
+  wilaya: 'Wilaya',
+  locality: 'locality',
+  completedHomeVisits: 0,
+  homeVisits: [],
+}

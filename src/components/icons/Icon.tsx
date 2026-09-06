@@ -59,6 +59,10 @@ export type IconName =
   | 'info'
   | 'checkCircle'
   | 'flame'
+  | 'sliders'
+  | 'star'
+  | 'trendUp'
+  | 'medal'
 
 interface IconProps {
   name: IconName
@@ -491,6 +495,35 @@ export default function Icon({ name, className = 'w-5 h-5' }: IconProps) {
       return (
         <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
           <path d="M12 3s-5 4.5-5 9a5 5 0 0 0 10 0c0-1.5-.7-2.5-1.3-3.3.2 1.3-.4 2-1 2.3.4-2-1-3.5-1-5.5-.5 1-1.7 1.8-1.7 2.5Z" />
+        </svg>
+      )
+    case 'sliders':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M4 7h10M18 7h2M4 17h2M10 17h10" />
+          <circle cx="16" cy="7" r="2" fill="currentColor" stroke="none" />
+          <circle cx="8" cy="17" r="2" fill="currentColor" stroke="none" />
+        </svg>
+      )
+    case 'star':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9Z" />
+        </svg>
+      )
+    case 'trendUp':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M4 16l6-6 4 4 6-7" />
+          <path d="M15 7h5v5" />
+        </svg>
+      )
+    case 'medal':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M9 3l3 6 3-6" />
+          <circle cx="12" cy="14" r="6" />
+          <path d="M10 13.5l1.5 1.5 3-3" />
         </svg>
       )
     case 'more':

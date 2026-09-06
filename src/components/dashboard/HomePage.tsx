@@ -16,6 +16,8 @@ interface HomePageProps {
   userId?: string
   onCreateNewVisit?: () => void
   onSeeAllVisits?: () => void
+  onOverviewDashboard?: () => void
+  onViewVisitDetails?: () => void
 }
 
 export default function HomePage({
@@ -23,6 +25,8 @@ export default function HomePage({
   userId = 'D111123333',
   onCreateNewVisit,
   onSeeAllVisits,
+  onOverviewDashboard,
+  onViewVisitDetails,
 }: HomePageProps) {
   return (
     <div>
@@ -34,7 +38,12 @@ export default function HomePage({
       <CustomerActivitiesSection />
       <InventoryDashboardSection />
       <StockManagementSection />
-      <VisitManagementSection onCreateNewVisit={onCreateNewVisit} onSeeAll={onSeeAllVisits} />
+      <VisitManagementSection
+        onCreateNewVisit={onCreateNewVisit}
+        onSeeAll={onSeeAllVisits}
+        onOverviewDashboard={onOverviewDashboard}
+        onViewDetails={onViewVisitDetails}
+      />
       <KPIsSection />
       <B2BActivitiesSection />
       <ChannelMemberOnboardingSection />

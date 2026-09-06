@@ -7,10 +7,11 @@ import CreateVisitPage from './CreateVisitPage'
 import VisitListPage from './VisitListPage'
 import AreaVisitDetailsPage from './AreaVisitDetailsPage'
 import HomeVisitsPage from './HomeVisitsPage'
+import VisitsDashboardPage from './VisitsDashboardPage'
 import BottomNav, { type Page } from './BottomNav'
-import type { AreaVisit } from './visitsData'
+import { homeAreaVisit, type AreaVisit } from './visitsData'
 
-type Route = 'tabs' | 'visitList' | 'createVisit' | 'visitDetails' | 'homeVisits'
+type Route = 'tabs' | 'visitList' | 'createVisit' | 'visitDetails' | 'homeVisits' | 'visitsDashboard'
 
 export default function DashboardScreen() {
   const [page, setPage] = useState<Page>('Home')
@@ -50,6 +51,8 @@ export default function DashboardScreen() {
           <HomeVisitsPage homeVisits={selectedVisit.homeVisits} onBack={pop} />
         )}
 
+        {current === 'visitsDashboard' && <VisitsDashboardPage onBack={pop} />}
+
         {current === 'tabs' && (
           <>
             <TopBar />
@@ -59,6 +62,8 @@ export default function DashboardScreen() {
                 <HomePage
                   onCreateNewVisit={() => push('createVisit')}
                   onSeeAllVisits={() => push('visitList')}
+                  onOverviewDashboard={() => push('visitsDashboard')}
+                  onViewVisitDetails={() => openVisitDetails(homeAreaVisit)}
                 />
               )}
               {page === 'Services' && <ServicesPage />}
