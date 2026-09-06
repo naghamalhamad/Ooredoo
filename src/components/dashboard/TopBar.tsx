@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser, faTableCellsLarge, faBell } from '@fortawesome/free-solid-svg-icons'
-import ooredooLogo from '../../../assets/Vector.svg'
+import ooredooLogo from '../../../Vector.svg'
 
 interface TopBarProps {
   onProfileClick?: () => void
