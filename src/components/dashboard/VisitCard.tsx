@@ -10,7 +10,7 @@ interface VisitCardProps {
 
 export default function VisitCard({ visitName, startDate, completedCount, location, active = true }: VisitCardProps) {
   return (
-    <div className="rounded-xl bg-blue-600 p-4 text-white">
+    <div className="rounded-xl bg-[#0047BB] p-4 text-white">
       <div className="flex items-center justify-between">
         <p className="text-lg font-bold">{visitName}</p>
         <span
