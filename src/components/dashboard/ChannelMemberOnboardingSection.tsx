@@ -8,7 +8,7 @@ export default function ChannelMemberOnboardingSection() {
         <h2 className="pb-3 text-base font-semibold text-gray-900">Channel Member Onboarding</h2>
         <hr className="mb-3 border-gray-100" />
         <div className="grid grid-cols-4 gap-x-1 gap-y-3">
-          <IconGridButton icon="onboarding" label="Channel Onboarding" />
+          <IconGridButton icon="onboarding" label="Channel Onboarding" iconColor="#0047BB" />
         </div>
       </Card>
     </div>

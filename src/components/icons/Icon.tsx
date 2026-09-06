@@ -45,6 +45,11 @@ export type IconName =
   | 'more'
   | 'smiley'
   | 'barChart'
+  | 'printer'
+  | 'ban'
+  | 'send'
+  | 'download'
+  | 'upload'
 
 interface IconProps {
   name: IconName
@@ -382,6 +387,43 @@ export default function Icon({ name, className = 'w-5 h-5' }: IconProps) {
       return (
         <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
           <path d="M4 20V10M10 20V4M16 20v-7M4 20h16" />
+        </svg>
+      )
+    case 'printer':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M6 9V4h12v5" />
+          <rect x="4" y="9" width="16" height="7" rx="1.5" />
+          <rect x="7" y="14" width="10" height="6" rx="1" />
+        </svg>
+      )
+    case 'ban':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M5.5 5.5l13 13" />
+        </svg>
+      )
+    case 'send':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M3 11l18-8-8 18-2.5-7.5L3 11Z" />
+        </svg>
+      )
+    case 'download':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M12 4v10" />
+          <path d="M8 10l4 4 4-4" />
+          <path d="M4 18h16" />
+        </svg>
+      )
+    case 'upload':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M12 18V8" />
+          <path d="M8 12l4-4 4 4" />
+          <path d="M4 18h16" />
         </svg>
       )
     case 'more':

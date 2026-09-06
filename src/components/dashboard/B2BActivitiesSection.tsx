@@ -7,6 +7,7 @@ export const b2bActivities: { icon: IconName; label: string }[] = [
   { icon: 'sim', label: 'Prepaid' },
   { icon: 'billPayment', label: 'Postpaid' },
   { icon: 'ticket', label: 'Trouble Ticket' },
+  { icon: 'router', label: 'Fixed' },
 ]
 
 export default function B2BActivitiesSection() {
