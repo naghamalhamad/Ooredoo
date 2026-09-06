@@ -28,9 +28,9 @@ export default function DashboardScreen() {
 
   return (
     <div className="flex min-h-screen flex-col bg-gray-100 sm:items-center sm:py-6">
-      <div className="flex w-full max-w-sm flex-1 flex-col bg-gray-100 sm:min-h-[90vh] sm:rounded-3xl sm:shadow-xl sm:overflow-hidden">
+      <div className="flex w-full flex-1 flex-col bg-gray-100 sm:max-w-sm sm:min-h-[90vh] sm:rounded-3xl sm:shadow-xl sm:overflow-hidden">
         {current === 'createVisit' && (
-          <CreateVisitPage onBack={pop} onDiscard={pop} onSubmit={pop} />
+          <CreateVisitPage onBack={pop} onDiscard={pop} onSubmit={() => setStack(['tabs', 'visitList'])} />
         )}
 
         {current === 'visitList' && (

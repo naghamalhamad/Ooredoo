@@ -71,12 +71,12 @@ function LocationRow({ label, value }: { label: string; value: string }) {
 
 export default function AreaVisitDetailsPage({ visit, onBack, onClose, onStartAreaVisit }: AreaVisitDetailsPageProps) {
   const disabled = visit.status !== 'Scheduled'
-  const showCompletedBadge = visit.status !== 'Scheduled'
+  const showCompletedBadge = visit.status !== 'Scheduled' && visit.status !== 'Canceled'
   const showStartButtons = visit.status === 'Active'
 
   return (
     <div className="flex flex-1 flex-col overflow-y-auto bg-gray-100">
-      <div className="flex items-center justify-between border-b border-gray-100 bg-white px-4 py-3">
+      <div className="flex items-center justify-between px-4 py-3">
         <button type="button" onClick={onBack} aria-label="Back" className="text-gray-900">
           <Icon name="arrowLeft" className="h-5 w-5" />
         </button>

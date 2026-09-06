@@ -80,7 +80,7 @@ export default function HomeVisitsPage({ homeVisits, onBack, onStartHomeVisit }:
 
   return (
     <div className="relative flex flex-1 flex-col bg-gray-100">
-      <div className="flex items-center justify-between border-b border-gray-100 bg-white px-4 py-3">
+      <div className="flex items-center justify-between px-4 py-3">
         <button type="button" onClick={onBack} aria-label="Back" className="text-gray-900">
           <Icon name="arrowLeft" className="h-5 w-5" />
         </button>
