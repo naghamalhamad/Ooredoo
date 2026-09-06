@@ -51,6 +51,11 @@ export type IconName =
   | 'download'
   | 'upload'
   | 'arrowRight'
+  | 'arrowLeft'
+  | 'close'
+  | 'search'
+  | 'filter'
+  | 'plus'
 
 interface IconProps {
   name: IconName
@@ -431,6 +436,37 @@ export default function Icon({ name, className = 'w-5 h-5' }: IconProps) {
       return (
         <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
           <path d="M4 12h16M14 6l6 6-6 6" />
+        </svg>
+      )
+    case 'arrowLeft':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M20 12H4M10 6l-6 6 6 6" />
+        </svg>
+      )
+    case 'close':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      )
+    case 'search':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <circle cx="11" cy="11" r="7" />
+          <path d="M20 20l-4.35-4.35" />
+        </svg>
+      )
+    case 'filter':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M4 5h16l-6 7.5V19l-4 2v-8.5L4 5Z" />
+        </svg>
+      )
+    case 'plus':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M12 5v14M5 12h14" />
         </svg>
       )
     case 'more':

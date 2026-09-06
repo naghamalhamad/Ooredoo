@@ -14,9 +14,16 @@ import ChannelMemberOnboardingSection from './ChannelMemberOnboardingSection'
 interface HomePageProps {
   userName?: string
   userId?: string
+  onCreateNewVisit?: () => void
+  onSeeAllVisits?: () => void
 }
 
-export default function HomePage({ userName = 'Omer', userId = 'D111123333' }: HomePageProps) {
+export default function HomePage({
+  userName = 'Omer',
+  userId = 'D111123333',
+  onCreateNewVisit,
+  onSeeAllVisits,
+}: HomePageProps) {
   return (
     <div>
       <GreetingCard name={userName} id={userId} />
@@ -27,7 +34,7 @@ export default function HomePage({ userName = 'Omer', userId = 'D111123333' }: H
       <CustomerActivitiesSection />
       <InventoryDashboardSection />
       <StockManagementSection />
-      <VisitManagementSection />
+      <VisitManagementSection onCreateNewVisit={onCreateNewVisit} onSeeAll={onSeeAllVisits} />
       <KPIsSection />
       <B2BActivitiesSection />
       <ChannelMemberOnboardingSection />
