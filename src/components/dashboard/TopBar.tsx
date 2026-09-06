@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser, faTableCellsLarge, faBell } from '@fortawesome/free-solid-svg-icons'
+import ooredooLogo from '../../../assets/Vector.svg'
 
 interface TopBarProps {
   onProfileClick?: () => void
@@ -35,9 +36,7 @@ export default function TopBar({ onProfileClick, onNotificationClick }: TopBarPr
         >
           <FontAwesomeIcon icon={faCircleUser} className="text-xl" />
         </button>
-        <span className="text-xl font-extrabold italic tracking-tight text-white">
-          ooredoo<sup className="text-[9px] not-italic">&deg;</sup>
-        </span>
+        <img src={ooredooLogo} alt="ooredoo" className="h-[18px] w-auto" />
         <div className="flex items-center gap-4">
           <button type="button" className="flex text-white hover:opacity-80 transition-opacity" aria-label="Scan">
             <FontAwesomeIcon icon={faTableCellsLarge} className="text-lg" />
