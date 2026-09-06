@@ -10,7 +10,13 @@ import HomeVisitsPage from './HomeVisitsPage'
 import VisitsDashboardPage from './VisitsDashboardPage'
 import FiltersPage from './FiltersPage'
 import BottomNav, { type Page } from './BottomNav'
-import { homeAreaVisit, defaultDashboardFilters, type AreaVisit, type DashboardFilters } from './visitsData'
+import {
+  homeAreaVisit,
+  defaultDashboardFilters,
+  dealerWorkingPeriod,
+  type AreaVisit,
+  type DashboardFilters,
+} from './visitsData'
 
 type Route = 'tabs' | 'visitList' | 'createVisit' | 'visitDetails' | 'homeVisits' | 'visitsDashboard' | 'filters'
 
@@ -31,9 +37,11 @@ export default function DashboardScreen() {
 
   const removeFilter = (key: 'dateRange' | 'region' | 'wilaya') => {
     setDashboardFilters((f) => {
-      if (key === 'dateRange') return { ...f, dateFrom: '', dateTo: '' }
-      if (key === 'region') return { ...f, region: '' }
-      return { ...f, wilaya: '' }
+      if (key === 'dateRange') {
+        return { ...f, dateFrom: dealerWorkingPeriod.dateFrom, dateTo: dealerWorkingPeriod.dateTo }
+      }
+      if (key === 'region') return { ...f, region: 'All Regions' }
+      return { ...f, wilaya: 'All Wilayas' }
     })
   }
 

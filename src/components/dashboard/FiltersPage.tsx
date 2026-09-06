@@ -20,7 +20,7 @@ function DateField({ label, value, onChange }: { label: string; value: string; o
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full rounded-[4px] border border-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
+          className="w-full rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
         />
         <Icon name="calendar" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
       </div>
@@ -44,7 +44,7 @@ function SelectField({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full appearance-none rounded-[4px] border border-gray-200 bg-transparent px-3 py-2.5 text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
+        className="w-full appearance-none rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
       >
         <option value="">{placeholder}</option>
         {options.map((option) => (

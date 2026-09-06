@@ -30,8 +30,8 @@ export const dealerWorkingPeriod = {
 export const defaultDashboardFilters: DashboardFilters = {
   dateFrom: dealerWorkingPeriod.dateFrom,
   dateTo: dealerWorkingPeriod.dateTo,
-  region: '',
-  wilaya: '',
+  region: 'All Regions',
+  wilaya: 'All Wilayas',
 }
 
 export interface AreaVisit {

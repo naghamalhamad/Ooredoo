@@ -75,9 +75,12 @@ function FilterChip({ label, onRemove }: { label: string; onRemove?: () => void 
 export default function VisitsDashboardPage({ filters, onBack, onOpenFilters, onRemoveFilter }: VisitsDashboardPageProps) {
   const matchesWorkingPeriod =
     filters.dateFrom === dealerWorkingPeriod.dateFrom && filters.dateTo === dealerWorkingPeriod.dateTo
-  const hasDateRange = filters.dateFrom && filters.dateTo
-  const hasRegion = filters.region && filters.region !== 'All Regions'
-  const hasWilaya = filters.wilaya && filters.wilaya !== 'All Wilayas'
+  const dateRangeLabel =
+    filters.dateFrom && filters.dateTo
+      ? `${filters.dateFrom} - ${filters.dateTo}`
+      : `${dealerWorkingPeriod.dateFrom} - ${dealerWorkingPeriod.dateTo}`
+  const regionLabel = filters.region || 'All Regions'
+  const wilayaLabel = filters.wilaya || 'All Wilayas'
 
   return (
     <div className="flex flex-1 flex-col bg-gray-100">
@@ -92,14 +95,9 @@ export default function VisitsDashboardPage({ filters, onBack, onOpenFilters, on
       </div>
 
       <div className="flex gap-2 overflow-x-auto px-4 pb-3">
-        {hasDateRange && (
-          <FilterChip
-            label={`${filters.dateFrom} - ${filters.dateTo}`}
-            onRemove={() => onRemoveFilter?.('dateRange')}
-          />
-        )}
-        {hasRegion && <FilterChip label={filters.region} onRemove={() => onRemoveFilter?.('region')} />}
-        {hasWilaya && <FilterChip label={filters.wilaya} onRemove={() => onRemoveFilter?.('wilaya')} />}
+        <FilterChip label={dateRangeLabel} onRemove={() => onRemoveFilter?.('dateRange')} />
+        <FilterChip label={regionLabel} onRemove={() => onRemoveFilter?.('region')} />
+        <FilterChip label={wilayaLabel} onRemove={() => onRemoveFilter?.('wilaya')} />
       </div>
 
       <div className="px-4 py-2">

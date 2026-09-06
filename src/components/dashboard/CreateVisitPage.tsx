@@ -13,7 +13,7 @@ function TextField({ label, placeholder }: { label: string; placeholder: string 
       <input
         type="text"
         placeholder={placeholder}
-        className="w-full rounded-[4px] border border-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 placeholder:font-semibold placeholder:text-gray-900 focus:border-rose-400 focus:outline-none"
+        className="w-full rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-900 placeholder:font-semibold placeholder:text-gray-900 focus:border-rose-400 focus:outline-none"
       />
     </label>
   )
@@ -26,7 +26,7 @@ function SelectField({ label, placeholder }: { label: string; placeholder: strin
       <div className="relative">
         <select
           defaultValue=""
-          className="w-full appearance-none rounded-[4px] border border-gray-200 bg-transparent px-3 py-2.5 text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
+          className="w-full appearance-none rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
         >
           <option value="" disabled>
             {placeholder}
@@ -49,7 +49,7 @@ function DateField({ label, value }: { label: string; value: string }) {
         <input
           type="text"
           defaultValue={value}
-          className="w-full rounded-[4px] border border-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
+          className="w-full rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
         />
         <Icon name="calendar" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
       </div>
