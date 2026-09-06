@@ -50,6 +50,7 @@ export type IconName =
   | 'send'
   | 'download'
   | 'upload'
+  | 'arrowRight'
 
 interface IconProps {
   name: IconName
@@ -424,6 +425,12 @@ export default function Icon({ name, className = 'w-5 h-5' }: IconProps) {
           <path d="M12 18V8" />
           <path d="M8 12l4-4 4 4" />
           <path d="M4 18h16" />
+        </svg>
+      )
+    case 'arrowRight':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M4 12h16M14 6l6 6-6 6" />
         </svg>
       )
     case 'more':
