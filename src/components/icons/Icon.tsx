@@ -43,6 +43,8 @@ export type IconName =
   | 'shield'
   | 'help'
   | 'more'
+  | 'smiley'
+  | 'barChart'
 
 interface IconProps {
   name: IconName
@@ -365,6 +367,21 @@ export default function Icon({ name, className = 'w-5 h-5' }: IconProps) {
           <circle cx="12" cy="12" r="9" />
           <path d="M9.5 9a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 1.9-2.4 3.5" />
           <circle cx="12" cy="17" r="0.6" fill="currentColor" />
+        </svg>
+      )
+    case 'smiley':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <circle cx="12" cy="12" r="9" />
+          <circle cx="9" cy="10" r="0.6" fill="currentColor" />
+          <circle cx="15" cy="10" r="0.6" fill="currentColor" />
+          <path d="M8 14.5c1 1.5 2.5 2.2 4 2.2s3-.7 4-2.2" />
+        </svg>
+      )
+    case 'barChart':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M4 20V10M10 20V4M16 20v-7M4 20h16" />
         </svg>
       )
     case 'more':
