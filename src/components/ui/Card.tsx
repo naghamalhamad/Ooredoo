@@ -7,6 +7,6 @@ interface CardProps {
 
 export default function Card({ children, className = '' }: CardProps) {
   return (
-    <section className={`rounded-xl bg-white p-4 shadow-sm ${className}`}>{children}</section>
+    <section className={`rounded-[4px] bg-white p-4 shadow-sm ${className}`}>{children}</section>
   )
 }

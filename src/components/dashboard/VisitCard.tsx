@@ -20,7 +20,7 @@ export default function VisitCard({
   location,
 }: VisitCardProps) {
   return (
-    <div className="rounded-xl bg-[#0047BB] p-4 text-white">
+    <div className="rounded-[4px] bg-[#0047BB] p-4 text-white">
       <div className="flex items-center justify-between">
         <p className="text-lg font-bold">{title}</p>
         <span className="rounded-full bg-amber-400/25 px-3 py-1 text-xs font-medium text-amber-200">
@@ -28,8 +28,8 @@ export default function VisitCard({
         </span>
       </div>
 
-      <div className="mt-4 flex items-center gap-3 rounded-lg bg-white/10 px-3 py-2.5">
-        <div className="flex h-11 w-11 flex-shrink-0 flex-col items-center justify-center rounded-lg bg-white/15">
+      <div className="mt-4 flex items-center gap-3 rounded-[4px] bg-white/10 px-3 py-2.5">
+        <div className="flex h-11 w-11 flex-shrink-0 flex-col items-center justify-center rounded-[4px] bg-white/15">
           <span className="text-sm font-bold leading-none">{startDay}</span>
           <span className="text-[10px] leading-tight text-white/70">{startMonth}</span>
         </div>
@@ -40,7 +40,7 @@ export default function VisitCard({
         <p className="text-xs text-white/60">Ends {endDate}</p>
       </div>
 
-      <div className="mt-2 flex items-center gap-2 rounded-lg bg-white/10 px-3 py-2.5 text-sm">
+      <div className="mt-2 flex items-center gap-2 rounded-[4px] bg-white/10 px-3 py-2.5 text-sm">
         <Icon name="mapPin" className="h-4 w-4 flex-shrink-0" />
         <span>{location}</span>
       </div>

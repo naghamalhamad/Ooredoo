@@ -15,7 +15,7 @@ function scaleY(value: number) {
 
 function KpiChartCard({ title, mtd, lmtd }: { title: string; mtd: number; lmtd: number }) {
   return (
-    <div className="flex-1 rounded-xl bg-gray-50 p-3">
+    <div className="flex-1 rounded-[4px] bg-gray-50 p-3">
       <p className="mb-5 text-xs font-medium text-gray-500">{title}</p>
       <div className="flex gap-2">
         <div className="relative w-6 shrink-0" style={{ height: CHART_HEIGHT }}>
@@ -45,7 +45,7 @@ function LinkRow({ icon, label }: { icon: IconName; label: string }) {
   return (
     <button
       type="button"
-      className="flex w-full items-center gap-3 rounded-xl bg-gray-50 px-3 py-3 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+      className="flex w-full items-center gap-3 rounded-[4px] bg-gray-50 px-3 py-3 hover:bg-gray-100 active:bg-gray-200 transition-colors"
     >
       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-100 text-rose-600">
         <Icon name={icon} className="h-4 w-4" />

@@ -25,7 +25,7 @@ export default function VisitManagementSection({
         <button
           type="button"
           onClick={onOverviewDashboard}
-          className="mb-3 flex w-full items-center gap-3 rounded-lg bg-gray-50 px-3 py-2.5 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+          className="mb-3 flex w-full items-center gap-3 rounded-[4px] bg-gray-50 px-3 py-2.5 hover:bg-gray-100 active:bg-gray-200 transition-colors"
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-50 text-rose-600">
             <Icon name="gauge" className="h-4 w-4" />

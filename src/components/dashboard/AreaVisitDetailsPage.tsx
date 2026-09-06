@@ -16,7 +16,7 @@ function GrayField({ label, value, disabled }: { label: string; value: string; d
         type="text"
         defaultValue={value}
         disabled={disabled}
-        className="w-full rounded-lg bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
+        className="w-full rounded-[4px] bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
       />
     </label>
   )
@@ -30,7 +30,7 @@ function GraySelectField({ label, value, disabled }: { label: string; value: str
         <select
           defaultValue={value}
           disabled={disabled}
-          className="w-full appearance-none rounded-lg bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
+          className="w-full appearance-none rounded-[4px] bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
         >
           <option value={value}>{value}</option>
         </select>
@@ -52,7 +52,7 @@ function GrayDateField({ label, value, disabled }: { label: string; value: strin
           type="text"
           defaultValue={value}
           disabled={disabled}
-          className="w-full rounded-lg bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
+          className="w-full rounded-[4px] bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
         />
         <Icon name="calendar" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
       </div>
@@ -92,7 +92,7 @@ export default function AreaVisitDetailsPage({ visit, onBack, onClose, onStartAr
         </span>
 
         {showCompletedBadge && (
-          <div className="mt-4 flex items-center gap-2 rounded-lg bg-emerald-50 px-3 py-2.5">
+          <div className="mt-4 flex items-center gap-2 rounded-[4px] bg-emerald-50 px-3 py-2.5">
             <Icon name="checkCircle" className="h-4 w-4 flex-shrink-0 text-emerald-600" />
             <span className="flex-1 text-sm font-medium text-emerald-600">Completed Home Visits</span>
             <span className="text-sm font-semibold text-emerald-600">{visit.completedHomeVisits}</span>
@@ -116,7 +116,7 @@ export default function AreaVisitDetailsPage({ visit, onBack, onClose, onStartAr
         </div>
 
         <p className="mb-3 mt-6 text-sm font-semibold text-gray-900">Location Details</p>
-        <div className="divide-y divide-gray-100 rounded-xl bg-white">
+        <div className="divide-y divide-gray-100 rounded-[4px] bg-white">
           <LocationRow label="Region" value={visit.region} />
           <LocationRow label="Wilaya" value={visit.wilaya} />
           <LocationRow label="locality" value={visit.locality} />

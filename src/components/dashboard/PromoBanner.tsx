@@ -6,7 +6,7 @@ export default function PromoBanner() {
       <img
         src={promoHero}
         alt="Discount 70% — Special Offer Only For This Week"
-        className="w-full rounded-2xl"
+        className="w-full rounded-[4px]"
       />
     </div>
   )

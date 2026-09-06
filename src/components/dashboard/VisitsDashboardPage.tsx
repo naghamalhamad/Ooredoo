@@ -19,8 +19,8 @@ function StatTile({
   value: string
 }) {
   return (
-    <div className="rounded-xl bg-gray-50 p-3">
-      <span className={`flex h-9 w-9 items-center justify-center rounded-lg ${iconBg} ${iconColor}`}>
+    <div className="rounded-[4px] bg-gray-50 p-3">
+      <span className={`flex h-9 w-9 items-center justify-center rounded-[4px] ${iconBg} ${iconColor}`}>
         <Icon name={icon} className="h-4 w-4" />
       </span>
       <p className="mt-2 text-xs text-gray-400">{label}</p>
@@ -43,8 +43,8 @@ function InsightRow({
   subtitle: string
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-xl bg-gray-50 px-3 py-3">
-      <span className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg ${iconBg} ${iconColor}`}>
+    <div className="flex items-center gap-3 rounded-[4px] bg-gray-50 px-3 py-3">
+      <span className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-[4px] ${iconBg} ${iconColor}`}>
         <Icon name={icon} className="h-4 w-4" />
       </span>
       <div>
@@ -75,7 +75,7 @@ export default function VisitsDashboardPage({ onBack }: VisitsDashboardPageProps
           <h2 className="pb-3 text-base font-semibold text-gray-900">Customers Visit Management</h2>
           <hr className="mb-3 border-gray-100" />
 
-          <div className="flex items-center gap-3 rounded-xl bg-gray-50 px-3 py-3">
+          <div className="flex items-center gap-3 rounded-[4px] bg-gray-50 px-3 py-3">
             <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-600">
               <Icon name="mapPin" className="h-4 w-4" />
             </span>

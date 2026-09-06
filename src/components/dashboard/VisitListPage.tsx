@@ -19,7 +19,7 @@ function VisitRow({ name, status, onClick }: { name: string; status: AreaVisitSt
     <button
       type="button"
       onClick={onClick}
-      className="relative grid grid-cols-2 items-center rounded-2xl bg-white py-6 hover:bg-gray-50 transition-colors"
+      className="relative grid grid-cols-2 items-center rounded-[4px] bg-white py-6 hover:bg-gray-50 transition-colors"
     >
       <div className="flex justify-center">
         <span className="text-lg font-semibold text-gray-900">{name}</span>
@@ -49,7 +49,7 @@ export default function VisitListPage({ onBack, onCreateNew, onSelectVisit }: Vi
           <input
             type="text"
             placeholder="Search"
-            className="h-11 w-full rounded-lg border border-gray-200 bg-gray-100 pl-3 pr-9 text-sm text-gray-700 placeholder:text-gray-400 focus:border-rose-400 focus:outline-none"
+            className="h-11 w-full rounded-[4px] border border-gray-200 bg-gray-100 pl-3 pr-9 text-sm text-gray-700 placeholder:text-gray-400 focus:border-rose-400 focus:outline-none"
           />
           <Icon name="search" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
         </div>

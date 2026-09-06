@@ -11,7 +11,7 @@ function SettingsRow({ icon, label, value }: SettingsRowProps) {
   return (
     <button
       type="button"
-      className="flex w-full items-center justify-between rounded-lg px-2 py-3 text-left hover:bg-gray-50 active:bg-gray-100 transition-colors"
+      className="flex w-full items-center justify-between rounded-[4px] px-2 py-3 text-left hover:bg-gray-50 active:bg-gray-100 transition-colors"
     >
       <span className="flex items-center gap-3">
         <span className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-50 text-rose-600">
