@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import Icon from '../icons/Icon'
+import DatePickerModal from './DatePickerModal'
 import type { AreaVisit } from './visitsData'
-import { isoToShortDate, shortDateToIso } from './dateUtils'
+import { formatShortDate, parseShortDate } from './dateUtils'
 
 interface AreaVisitDetailsPageProps {
   visit: AreaVisit
@@ -47,30 +48,42 @@ function GraySelectField({ label, value, disabled }: { label: string; value: str
 
 function GrayDateField({ label, value, disabled }: { label: string; value: string; disabled?: boolean }) {
   const [current, setCurrent] = useState(value)
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <label className="block">
+    <div className="block">
       <span className="mb-1 block text-xs text-gray-400">{label}</span>
       <div className="relative">
-        <input
-          type="text"
-          value={current}
-          readOnly
-          disabled={disabled}
-          className="w-full rounded-[4px] bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
-        />
-        {!disabled && (
+        {disabled ? (
           <input
-            type="date"
-            value={shortDateToIso(current)}
-            onChange={(e) => setCurrent(isoToShortDate(e.target.value))}
-            aria-label={label}
-            className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+            type="text"
+            value={current}
+            readOnly
+            disabled
+            className="w-full rounded-[4px] bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
           />
+        ) : (
+          <button
+            type="button"
+            onClick={() => setIsOpen(true)}
+            className="w-full rounded-[4px] bg-gray-200 px-3 py-2.5 text-left text-sm font-semibold text-gray-900"
+          >
+            {current}
+          </button>
         )}
         <Icon name="calendar" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
       </div>
-    </label>
+      {isOpen && (
+        <DatePickerModal
+          initialDate={parseShortDate(current)}
+          onCancel={() => setIsOpen(false)}
+          onConfirm={(date) => {
+            setCurrent(formatShortDate(date))
+            setIsOpen(false)
+          }}
+        />
+      )}
+    </div>
   )
 }
 

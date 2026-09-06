@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Icon from '../icons/Icon'
-import { isoToShortDate, shortDateToIso } from './dateUtils'
+import DatePickerModal from './DatePickerModal'
+import { formatShortDate, parseShortDate } from './dateUtils'
 
 interface CreateVisitPageProps {
   onBack?: () => void
@@ -45,27 +46,32 @@ function SelectField({ label, placeholder }: { label: string; placeholder: strin
 
 function DateField({ label, initialValue }: { label: string; initialValue: string }) {
   const [value, setValue] = useState(initialValue)
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <label className="block">
+    <div className="block">
       <span className="mb-1 block text-xs text-gray-400">{label}</span>
       <div className="relative">
-        <input
-          type="text"
-          value={value}
-          readOnly
-          className="w-full rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
-        />
-        <input
-          type="date"
-          value={shortDateToIso(value)}
-          onChange={(e) => setValue(isoToShortDate(e.target.value))}
-          aria-label={label}
-          className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
-        />
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className="w-full rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-left text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
+        >
+          {value}
+        </button>
         <Icon name="calendar" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
       </div>
-    </label>
+      {isOpen && (
+        <DatePickerModal
+          initialDate={parseShortDate(value)}
+          onCancel={() => setIsOpen(false)}
+          onConfirm={(date) => {
+            setValue(formatShortDate(date))
+            setIsOpen(false)
+          }}
+        />
+      )}
+    </div>
   )
 }
 
