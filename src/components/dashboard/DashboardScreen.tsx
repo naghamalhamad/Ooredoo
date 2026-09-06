@@ -8,15 +8,17 @@ import VisitListPage from './VisitListPage'
 import AreaVisitDetailsPage from './AreaVisitDetailsPage'
 import HomeVisitsPage from './HomeVisitsPage'
 import VisitsDashboardPage from './VisitsDashboardPage'
+import FiltersPage from './FiltersPage'
 import BottomNav, { type Page } from './BottomNav'
-import { homeAreaVisit, type AreaVisit } from './visitsData'
+import { homeAreaVisit, defaultDashboardFilters, type AreaVisit, type DashboardFilters } from './visitsData'
 
-type Route = 'tabs' | 'visitList' | 'createVisit' | 'visitDetails' | 'homeVisits' | 'visitsDashboard'
+type Route = 'tabs' | 'visitList' | 'createVisit' | 'visitDetails' | 'homeVisits' | 'visitsDashboard' | 'filters'
 
 export default function DashboardScreen() {
   const [page, setPage] = useState<Page>('Home')
   const [stack, setStack] = useState<Route[]>(['tabs'])
   const [selectedVisit, setSelectedVisit] = useState<AreaVisit | null>(null)
+  const [dashboardFilters, setDashboardFilters] = useState<DashboardFilters>(defaultDashboardFilters)
   const current = stack[stack.length - 1]
 
   const push = (route: Route) => setStack((s) => [...s, route])
@@ -25,6 +27,14 @@ export default function DashboardScreen() {
   const openVisitDetails = (visit: AreaVisit) => {
     setSelectedVisit(visit)
     push('visitDetails')
+  }
+
+  const removeFilter = (key: 'dateRange' | 'region' | 'wilaya') => {
+    setDashboardFilters((f) => {
+      if (key === 'dateRange') return { ...f, dateFrom: '', dateTo: '' }
+      if (key === 'region') return { ...f, region: '' }
+      return { ...f, wilaya: '' }
+    })
   }
 
   return (
@@ -51,7 +61,25 @@ export default function DashboardScreen() {
           <HomeVisitsPage homeVisits={selectedVisit.homeVisits} onBack={pop} />
         )}
 
-        {current === 'visitsDashboard' && <VisitsDashboardPage onBack={pop} />}
+        {current === 'visitsDashboard' && (
+          <VisitsDashboardPage
+            filters={dashboardFilters}
+            onBack={pop}
+            onOpenFilters={() => push('filters')}
+            onRemoveFilter={removeFilter}
+          />
+        )}
+
+        {current === 'filters' && (
+          <FiltersPage
+            initialFilters={dashboardFilters}
+            onBack={pop}
+            onApply={(filters) => {
+              setDashboardFilters(filters)
+              pop()
+            }}
+          />
+        )}
 
         {current === 'tabs' && (
           <>

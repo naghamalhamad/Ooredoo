@@ -63,6 +63,7 @@ export type IconName =
   | 'star'
   | 'trendUp'
   | 'medal'
+  | 'hourglass'
 
 interface IconProps {
   name: IconName
@@ -524,6 +525,13 @@ export default function Icon({ name, className = 'w-5 h-5' }: IconProps) {
           <path d="M9 3l3 6 3-6" />
           <circle cx="12" cy="14" r="6" />
           <path d="M10 13.5l1.5 1.5 3-3" />
+        </svg>
+      )
+    case 'hourglass':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M6 3h12M6 21h12" />
+          <path d="M7 3c0 4 3 5 5 6-2 1-5 2-5 6M17 3c0 4-3 5-5 6 2 1 5 2 5 6" />
         </svg>
       )
     case 'more':

@@ -15,6 +15,25 @@ export interface HomeVisit {
   hotLead?: boolean
 }
 
+export interface DashboardFilters {
+  dateFrom: string
+  dateTo: string
+  region: string
+  wilaya: string
+}
+
+export const dealerWorkingPeriod = {
+  dateFrom: '9 Aug 2023',
+  dateTo: '20 Aug 2023',
+}
+
+export const defaultDashboardFilters: DashboardFilters = {
+  dateFrom: dealerWorkingPeriod.dateFrom,
+  dateTo: dealerWorkingPeriod.dateTo,
+  region: '',
+  wilaya: '',
+}
+
 export interface AreaVisit {
   name: string
   status: AreaVisitStatus

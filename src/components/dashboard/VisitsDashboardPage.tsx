@@ -1,8 +1,14 @@
 import Card from '../ui/Card'
 import Icon, { type IconName } from '../icons/Icon'
+import { dealerWorkingPeriod, type DashboardFilters } from './visitsData'
+
+type RemovableFilter = 'dateRange' | 'region' | 'wilaya'
 
 interface VisitsDashboardPageProps {
+  filters: DashboardFilters
   onBack?: () => void
+  onOpenFilters?: () => void
+  onRemoveFilter?: (key: RemovableFilter) => void
 }
 
 function StatTile({
@@ -55,7 +61,24 @@ function InsightRow({
   )
 }
 
-export default function VisitsDashboardPage({ onBack }: VisitsDashboardPageProps) {
+function FilterChip({ label, onRemove }: { label: string; onRemove?: () => void }) {
+  return (
+    <span className="inline-flex flex-shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-rose-300 bg-white px-3 py-1.5 text-sm font-medium text-rose-600">
+      {label}
+      <button type="button" onClick={onRemove} aria-label={`Remove ${label} filter`} className="text-rose-600">
+        <Icon name="close" className="h-3 w-3" />
+      </button>
+    </span>
+  )
+}
+
+export default function VisitsDashboardPage({ filters, onBack, onOpenFilters, onRemoveFilter }: VisitsDashboardPageProps) {
+  const matchesWorkingPeriod =
+    filters.dateFrom === dealerWorkingPeriod.dateFrom && filters.dateTo === dealerWorkingPeriod.dateTo
+  const hasDateRange = filters.dateFrom && filters.dateTo
+  const hasRegion = filters.region && filters.region !== 'All Regions'
+  const hasWilaya = filters.wilaya && filters.wilaya !== 'All Wilayas'
+
   return (
     <div className="flex flex-1 flex-col bg-gray-100">
       <div className="flex items-center justify-between px-4 py-3">
@@ -63,12 +86,21 @@ export default function VisitsDashboardPage({ onBack }: VisitsDashboardPageProps
           <Icon name="arrowLeft" className="h-5 w-5" />
         </button>
         <h1 className="text-base font-semibold text-gray-900">Visits Dashboard</h1>
-        <button type="button" aria-label="Filters" className="text-gray-900">
+        <button type="button" onClick={onOpenFilters} aria-label="Filters" className="text-gray-900">
           <Icon name="sliders" className="h-5 w-5" />
         </button>
       </div>
 
-      <p className="px-4 pb-2 text-xs text-gray-400">9 Aug 2023 - 20 Aug 2023 &bull; All Regions &bull; All Wilayas</p>
+      <div className="flex gap-2 overflow-x-auto px-4 pb-3">
+        {hasDateRange && (
+          <FilterChip
+            label={`${filters.dateFrom} - ${filters.dateTo}`}
+            onRemove={() => onRemoveFilter?.('dateRange')}
+          />
+        )}
+        {hasRegion && <FilterChip label={filters.region} onRemove={() => onRemoveFilter?.('region')} />}
+        {hasWilaya && <FilterChip label={filters.wilaya} onRemove={() => onRemoveFilter?.('wilaya')} />}
+      </div>
 
       <div className="px-4 py-2">
         <Card>
@@ -97,29 +129,39 @@ export default function VisitsDashboardPage({ onBack }: VisitsDashboardPageProps
         <Card>
           <h2 className="pb-3 text-base font-semibold text-gray-900">Insights</h2>
           <hr className="mb-3 border-gray-100" />
-          <div className="flex flex-col gap-2">
-            <InsightRow
-              icon="trendUp"
-              iconBg="bg-emerald-100"
-              iconColor="text-emerald-600"
-              title="Activations up 16%"
-              subtitle="Strongest week so far this month"
-            />
-            <InsightRow
-              icon="medal"
-              iconBg="bg-blue-100"
-              iconColor="text-blue-600"
-              title="Top Wilaya: Bawshar"
-              subtitle="47 visits · 21 activations"
-            />
-            <InsightRow
-              icon="star"
-              iconBg="bg-amber-100"
-              iconColor="text-amber-600"
-              title="5 leads need follow-up"
-              subtitle="Older than 48 hours without contact"
-            />
-          </div>
+          {matchesWorkingPeriod ? (
+            <div className="flex flex-col gap-2">
+              <InsightRow
+                icon="trendUp"
+                iconBg="bg-emerald-100"
+                iconColor="text-emerald-600"
+                title="Activations up 16%"
+                subtitle="Strongest week so far this month"
+              />
+              <InsightRow
+                icon="medal"
+                iconBg="bg-blue-100"
+                iconColor="text-blue-600"
+                title="Top Wilaya: Bawshar"
+                subtitle="47 visits · 21 activations"
+              />
+              <InsightRow
+                icon="star"
+                iconBg="bg-amber-100"
+                iconColor="text-amber-600"
+                title="5 leads need follow-up"
+                subtitle="Older than 48 hours without contact"
+              />
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center gap-2 rounded-[4px] bg-gray-50 px-4 py-8 text-center">
+              <span className="flex h-9 w-9 items-center justify-center rounded-[4px] bg-rose-50 text-rose-600">
+                <Icon name="hourglass" className="h-5 w-5" />
+              </span>
+              <p className="text-sm font-semibold text-gray-900">No insights yet</p>
+              <p className="text-xs text-gray-400">Insights will appear once you have a month of activity to compare against.</p>
+            </div>
+          )}
         </Card>
       </div>
     </div>
