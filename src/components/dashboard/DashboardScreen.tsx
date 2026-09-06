@@ -5,17 +5,26 @@ import ServicesPage from './ServicesPage'
 import SettingsPage from './SettingsPage'
 import CreateVisitPage from './CreateVisitPage'
 import VisitListPage from './VisitListPage'
+import AreaVisitDetailsPage from './AreaVisitDetailsPage'
+import HomeVisitsPage from './HomeVisitsPage'
 import BottomNav, { type Page } from './BottomNav'
+import type { AreaVisit } from './visitsData'
 
-type Route = 'tabs' | 'visitList' | 'createVisit'
+type Route = 'tabs' | 'visitList' | 'createVisit' | 'visitDetails' | 'homeVisits'
 
 export default function DashboardScreen() {
   const [page, setPage] = useState<Page>('Home')
   const [stack, setStack] = useState<Route[]>(['tabs'])
+  const [selectedVisit, setSelectedVisit] = useState<AreaVisit | null>(null)
   const current = stack[stack.length - 1]
 
   const push = (route: Route) => setStack((s) => [...s, route])
   const pop = () => setStack((s) => (s.length > 1 ? s.slice(0, -1) : s))
+
+  const openVisitDetails = (visit: AreaVisit) => {
+    setSelectedVisit(visit)
+    push('visitDetails')
+  }
 
   return (
     <div className="flex min-h-screen flex-col bg-gray-100 sm:items-center sm:py-6">
@@ -25,7 +34,20 @@ export default function DashboardScreen() {
         )}
 
         {current === 'visitList' && (
-          <VisitListPage onBack={pop} onCreateNew={() => push('createVisit')} />
+          <VisitListPage onBack={pop} onCreateNew={() => push('createVisit')} onSelectVisit={openVisitDetails} />
+        )}
+
+        {current === 'visitDetails' && selectedVisit && (
+          <AreaVisitDetailsPage
+            visit={selectedVisit}
+            onBack={pop}
+            onClose={() => setStack(['tabs'])}
+            onStartAreaVisit={() => push('homeVisits')}
+          />
+        )}
+
+        {current === 'homeVisits' && selectedVisit && (
+          <HomeVisitsPage homeVisits={selectedVisit.homeVisits} onBack={pop} />
         )}
 
         {current === 'tabs' && (

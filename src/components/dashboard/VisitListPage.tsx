@@ -1,29 +1,26 @@
 import Icon from '../icons/Icon'
-
-type VisitStatus = 'Scheduled' | 'Active' | 'Completed' | 'Canceled'
+import { areaVisits, type AreaVisit, type AreaVisitStatus } from './visitsData'
 
 interface VisitListPageProps {
   onBack?: () => void
   onCreateNew?: () => void
+  onSelectVisit?: (visit: AreaVisit) => void
 }
 
-const visits: { name: string; status: VisitStatus }[] = [
-  { name: 'Visit name', status: 'Scheduled' },
-  { name: 'Visit name', status: 'Active' },
-  { name: 'Visit name', status: 'Completed' },
-  { name: 'Visit name', status: 'Canceled' },
-]
-
-const statusStyles: Record<VisitStatus, string> = {
+const statusStyles: Record<AreaVisitStatus, string> = {
   Scheduled: 'text-amber-500',
   Active: 'text-[#0047BB]',
   Completed: 'text-emerald-500',
   Canceled: 'text-gray-400',
 }
 
-function VisitRow({ name, status }: { name: string; status: VisitStatus }) {
+function VisitRow({ name, status, onClick }: { name: string; status: AreaVisitStatus; onClick?: () => void }) {
   return (
-    <div className="relative grid grid-cols-2 items-center rounded-2xl bg-white py-6">
+    <button
+      type="button"
+      onClick={onClick}
+      className="relative grid grid-cols-2 items-center rounded-2xl bg-white py-6 hover:bg-gray-50 transition-colors"
+    >
       <div className="flex justify-center">
         <span className="text-lg font-semibold text-gray-900">{name}</span>
       </div>
@@ -32,11 +29,11 @@ function VisitRow({ name, status }: { name: string; status: VisitStatus }) {
         <p className="text-xs text-gray-400">Visit status</p>
         <p className={`text-base font-semibold ${statusStyles[status]}`}>{status}</p>
       </div>
-    </div>
+    </button>
   )
 }
 
-export default function VisitListPage({ onBack, onCreateNew }: VisitListPageProps) {
+export default function VisitListPage({ onBack, onCreateNew, onSelectVisit }: VisitListPageProps) {
   return (
     <div className="relative flex flex-1 flex-col bg-gray-100">
       <div className="flex items-center justify-between border-b border-gray-100 bg-white px-4 py-3">
@@ -66,8 +63,8 @@ export default function VisitListPage({ onBack, onCreateNew }: VisitListPageProp
       </div>
 
       <div className="flex flex-1 flex-col gap-3 px-4 pb-4">
-        {visits.map((visit, i) => (
-          <VisitRow key={i} name={visit.name} status={visit.status} />
+        {areaVisits.map((visit, i) => (
+          <VisitRow key={i} name={visit.name} status={visit.status} onClick={() => onSelectVisit?.(visit)} />
         ))}
       </div>
 

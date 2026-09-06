@@ -56,6 +56,9 @@ export type IconName =
   | 'search'
   | 'filter'
   | 'plus'
+  | 'info'
+  | 'checkCircle'
+  | 'flame'
 
 interface IconProps {
   name: IconName
@@ -467,6 +470,27 @@ export default function Icon({ name, className = 'w-5 h-5' }: IconProps) {
       return (
         <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
           <path d="M12 5v14M5 12h14" />
+        </svg>
+      )
+    case 'info':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 11v5" />
+          <circle cx="12" cy="8" r="0.6" fill="currentColor" />
+        </svg>
+      )
+    case 'checkCircle':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M8 12.5l2.5 2.5L16 9.5" />
+        </svg>
+      )
+    case 'flame':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M12 3s-5 4.5-5 9a5 5 0 0 0 10 0c0-1.5-.7-2.5-1.3-3.3.2 1.3-.4 2-1 2.3.4-2-1-3.5-1-5.5-.5 1-1.7 1.8-1.7 2.5Z" />
         </svg>
       )
     case 'more':
