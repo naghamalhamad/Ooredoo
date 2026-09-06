@@ -2,6 +2,7 @@ import Card from '../ui/Card'
 import SectionHeader from '../ui/SectionHeader'
 import Icon from '../icons/Icon'
 import VisitCard from './VisitCard'
+import visitMap from '../../../assets/visit-map.png'
 
 export default function VisitManagementSection() {
   return (
@@ -37,12 +38,8 @@ export default function VisitManagementSection() {
 
         <p className="mb-2 mt-4 text-sm font-semibold text-gray-900">Location</p>
         <div className="relative h-28 overflow-hidden rounded-xl bg-gray-500">
-          <div className="absolute inset-0 opacity-40">
-            <div className="absolute left-1/3 top-0 h-full w-px -rotate-12 bg-white/60" />
-            <div className="absolute left-2/3 top-0 h-full w-px rotate-6 bg-white/60" />
-            <div className="absolute inset-x-0 top-1/2 h-px bg-white/60" />
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center">
+          <img src={visitMap} alt="Visit location map" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 flex items-center justify-center bg-black/25">
             <span className="text-sm font-semibold text-white drop-shadow">View map</span>
           </div>
         </div>
