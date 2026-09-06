@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Icon from '../icons/Icon'
 import type { DashboardFilters } from './visitsData'
+import { isoToLongDate, longDateToIso } from './dateUtils'
 
 interface FiltersPageProps {
   initialFilters: DashboardFilters
@@ -19,8 +20,15 @@ function DateField({ label, value, onChange }: { label: string; value: string; o
         <input
           type="text"
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          readOnly
           className="w-full rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
+        />
+        <input
+          type="date"
+          value={longDateToIso(value)}
+          onChange={(e) => onChange(isoToLongDate(e.target.value))}
+          aria-label={label}
+          className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
         />
         <Icon name="calendar" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
       </div>

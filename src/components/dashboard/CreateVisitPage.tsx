@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import Icon from '../icons/Icon'
+import { isoToShortDate, shortDateToIso } from './dateUtils'
 
 interface CreateVisitPageProps {
   onBack?: () => void
@@ -41,15 +43,25 @@ function SelectField({ label, placeholder }: { label: string; placeholder: strin
   )
 }
 
-function DateField({ label, value }: { label: string; value: string }) {
+function DateField({ label, initialValue }: { label: string; initialValue: string }) {
+  const [value, setValue] = useState(initialValue)
+
   return (
     <label className="block">
       <span className="mb-1 block text-xs text-gray-400">{label}</span>
       <div className="relative">
         <input
           type="text"
-          defaultValue={value}
+          value={value}
+          readOnly
           className="w-full rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
+        />
+        <input
+          type="date"
+          value={shortDateToIso(value)}
+          onChange={(e) => setValue(isoToShortDate(e.target.value))}
+          aria-label={label}
+          className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
         />
         <Icon name="calendar" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
       </div>
@@ -79,8 +91,8 @@ export default function CreateVisitPage({ onBack, onDiscard, onSubmit }: CreateV
 
         <p className="mb-3 mt-6 text-sm font-semibold text-gray-900">Visit planning (Optional)</p>
         <div className="flex flex-col gap-3">
-          <DateField label="Date from" value="14-1-2024" />
-          <DateField label="Date to" value="14-2-2024" />
+          <DateField label="Date from" initialValue="14-1-2024" />
+          <DateField label="Date to" initialValue="14-2-2024" />
         </div>
 
         <p className="mb-3 mt-6 text-sm font-semibold text-gray-900">Location Details (Optional)</p>

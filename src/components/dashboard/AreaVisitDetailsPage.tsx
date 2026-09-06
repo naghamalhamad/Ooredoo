@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import Icon from '../icons/Icon'
 import type { AreaVisit } from './visitsData'
+import { isoToShortDate, shortDateToIso } from './dateUtils'
 
 interface AreaVisitDetailsPageProps {
   visit: AreaVisit
@@ -44,16 +46,28 @@ function GraySelectField({ label, value, disabled }: { label: string; value: str
 }
 
 function GrayDateField({ label, value, disabled }: { label: string; value: string; disabled?: boolean }) {
+  const [current, setCurrent] = useState(value)
+
   return (
     <label className="block">
       <span className="mb-1 block text-xs text-gray-400">{label}</span>
       <div className="relative">
         <input
           type="text"
-          defaultValue={value}
+          value={current}
+          readOnly
           disabled={disabled}
           className="w-full rounded-[4px] bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
         />
+        {!disabled && (
+          <input
+            type="date"
+            value={shortDateToIso(current)}
+            onChange={(e) => setCurrent(isoToShortDate(e.target.value))}
+            aria-label={label}
+            className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+          />
+        )}
         <Icon name="calendar" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
       </div>
     </label>
