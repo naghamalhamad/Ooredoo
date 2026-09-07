@@ -78,8 +78,7 @@ function ServiceGroup({ title, items }: { title: string; items: ServiceItem[] })
     <div className="px-4 py-2">
       <Card>
         <h2 className="pb-3 text-base font-semibold text-gray-900">{title}</h2>
-        <hr className="border-gray-100" />
-        <div className="divide-y divide-gray-100">
+        <div className="flex flex-col">
           {items.map((item, i) => (
             <ServiceRow key={`${item.label}-${i}`} icon={item.icon} label={item.label} />
           ))}

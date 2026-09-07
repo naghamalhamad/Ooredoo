@@ -23,7 +23,7 @@ export default function DoorStatusPage({ onBack, onClose, onDoorClosed, onDoorOp
 
   return (
     <div className="flex flex-1 flex-col bg-white">
-      <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3">
+      <div className="flex items-center justify-between px-4 py-3">
         <button type="button" onClick={onBack} aria-label="Back" className="text-gray-900">
           <Icon name="arrowLeft" className="h-5 w-5" />
         </button>
@@ -42,10 +42,10 @@ export default function DoorStatusPage({ onBack, onClose, onDoorClosed, onDoorOp
             type="button"
             onClick={() => setStatus('closed')}
             aria-pressed={status === 'closed'}
-            className={`flex flex-col items-center gap-3 rounded-[4px] border px-4 py-6 transition-colors ${
+            className={`flex flex-col items-center gap-3 rounded-[4px] px-4 py-6 transition-colors ${
               status === 'closed'
-                ? 'border-rose-600 bg-rose-50 text-rose-600'
-                : 'border-gray-200 bg-white text-gray-400 hover:bg-gray-50'
+                ? 'bg-rose-50 text-rose-600'
+                : 'bg-gray-50 text-gray-400 hover:bg-gray-100'
             }`}
           >
             <Icon name="lockClosed" className="h-8 w-8" />
@@ -56,10 +56,10 @@ export default function DoorStatusPage({ onBack, onClose, onDoorClosed, onDoorOp
             type="button"
             onClick={() => setStatus('open')}
             aria-pressed={status === 'open'}
-            className={`flex flex-col items-center gap-3 rounded-[4px] border px-4 py-6 transition-colors ${
+            className={`flex flex-col items-center gap-3 rounded-[4px] px-4 py-6 transition-colors ${
               status === 'open'
-                ? 'border-rose-600 bg-rose-50 text-rose-600'
-                : 'border-gray-200 bg-white text-gray-400 hover:bg-gray-50'
+                ? 'bg-rose-50 text-rose-600'
+                : 'bg-gray-50 text-gray-400 hover:bg-gray-100'
             }`}
           >
             <Icon name="lockOpen" className="h-8 w-8" />

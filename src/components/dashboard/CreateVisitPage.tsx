@@ -16,7 +16,7 @@ function TextField({ label, placeholder }: { label: string; placeholder: string 
       <input
         type="text"
         placeholder={placeholder}
-        className="w-full rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-900 placeholder:font-semibold placeholder:text-gray-900 focus:border-rose-400 focus:outline-none"
+        className="w-full rounded-[4px] bg-gray-100 px-3 py-2.5 text-sm font-semibold text-gray-900 placeholder:font-semibold placeholder:text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
       />
     </label>
   )
@@ -29,7 +29,7 @@ function SelectField({ label, placeholder }: { label: string; placeholder: strin
       <div className="relative">
         <select
           defaultValue=""
-          className="w-full appearance-none rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
+          className="w-full appearance-none rounded-[4px] bg-gray-100 px-3 py-2.5 text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
         >
           <option value="" disabled>
             {placeholder}
@@ -55,7 +55,7 @@ function DateField({ label, initialValue }: { label: string; initialValue: strin
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="w-full rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-left text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
+          className="w-full rounded-[4px] bg-gray-100 px-3 py-2.5 text-left text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
         >
           {value}
         </button>
@@ -78,7 +78,7 @@ function DateField({ label, initialValue }: { label: string; initialValue: strin
 export default function CreateVisitPage({ onBack, onDiscard, onSubmit }: CreateVisitPageProps) {
   return (
     <div className="flex flex-1 flex-col bg-white">
-      <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3">
+      <div className="flex items-center justify-between px-4 py-3">
         <button type="button" onClick={onBack} aria-label="Back" className="text-gray-900">
           <Icon name="arrowLeft" className="h-5 w-5" />
         </button>
@@ -120,7 +120,7 @@ export default function CreateVisitPage({ onBack, onDiscard, onSubmit }: CreateV
         <button
           type="button"
           onClick={onDiscard}
-          className="w-full rounded-full border border-rose-600 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50 active:bg-rose-100 transition-colors"
+          className="w-full rounded-full bg-rose-50 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-100 active:bg-rose-200 transition-colors"
         >
           Discard
         </button>

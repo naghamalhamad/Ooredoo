@@ -45,7 +45,7 @@ export default function SettingsPage() {
               <p className="text-sm text-gray-400">D111123333</p>
             </div>
           </div>
-          <div className="divide-y divide-gray-100 border-t border-gray-100">
+          <div className="flex flex-col">
             <SettingsRow icon="globe" label="Language & Region" value="English" />
             <SettingsRow icon="bell" label="Notifications" value="On" />
             <SettingsRow icon="shield" label="Security" />
@@ -57,7 +57,7 @@ export default function SettingsPage() {
       <div className="px-4 py-2">
         <button
           type="button"
-          className="flex w-full items-center justify-center gap-2 rounded-full border border-rose-600 py-2.5 text-sm font-medium text-rose-600 hover:bg-rose-50 active:bg-rose-100 transition-colors"
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-rose-50 py-2.5 text-sm font-medium text-rose-600 hover:bg-rose-100 active:bg-rose-200 transition-colors"
         >
           <Icon name="logout" className="h-4 w-4" />
           Log out

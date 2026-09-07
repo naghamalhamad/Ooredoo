@@ -17,7 +17,7 @@ export default function OverviewBarChart({ values }: OverviewBarChartProps) {
       <div className="relative flex-1">
         <div className="pointer-events-none absolute inset-x-0 top-0 flex h-56 flex-col justify-between pb-6">
           {ticks.map((tick) => (
-            <div key={tick} className="border-t border-gray-100" />
+            <div key={tick} className="h-px bg-gray-100" />
           ))}
         </div>
         <div className="relative z-10 flex h-56 items-end justify-around gap-4 pb-6">

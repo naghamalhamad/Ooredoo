@@ -50,7 +50,7 @@ interface BottomNavProps {
 
 export default function BottomNav({ active, onChange }: BottomNavProps) {
   return (
-    <nav className="sticky bottom-0 border-t border-gray-100 bg-white">
+    <nav className="sticky bottom-0 bg-white">
       <div className="flex items-stretch justify-around">
         {navItems.map((item) => {
           const isActive = item.label === active

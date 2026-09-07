@@ -30,8 +30,7 @@ export default function EReloadSection() {
   return (
     <div className="px-4 py-2">
       <Card>
-        <h2 className="pb-3 text-base font-semibold text-gray-900">E-Reload</h2>
-        <hr className="mb-3 border-gray-100" />
+        <h2 className="mb-3 text-base font-semibold text-gray-900">E-Reload</h2>
 
         <div className="mb-2 flex items-center justify-between px-1 text-xs text-gray-400">
           <span>Your Wallet Accounts</span>

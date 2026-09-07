@@ -129,7 +129,7 @@ export default function AreaVisitDetailsPage({
       </div>
 
       <div className="flex-1 px-4 py-4">
-        <span className="inline-block rounded-full border border-rose-600 px-4 py-1 text-sm font-semibold text-rose-600">
+        <span className="inline-block rounded-full bg-rose-50 px-4 py-1 text-sm font-semibold text-rose-600">
           {visit.status}
         </span>
 
@@ -223,7 +223,7 @@ export default function AreaVisitDetailsPage({
           <button
             type="button"
             onClick={onAddHomeVisit}
-            className="w-full rounded-full border border-rose-600 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50 active:bg-rose-100 transition-colors"
+            className="w-full rounded-full bg-rose-50 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-100 active:bg-rose-200 transition-colors"
           >
             Start Area Visit & Add Home Visit
           </button>

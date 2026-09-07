@@ -63,7 +63,7 @@ function InsightRow({
 
 function FilterChip({ label, onRemove }: { label: string; onRemove?: () => void }) {
   return (
-    <span className="inline-flex flex-shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-rose-300 bg-white px-3 py-1.5 text-sm font-medium text-rose-600">
+    <span className="inline-flex flex-shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-rose-50 px-3 py-1.5 text-sm font-medium text-rose-600">
       {label}
       <button type="button" onClick={onRemove} aria-label={`Remove ${label} filter`} className="text-rose-600">
         <Icon name="close" className="h-3 w-3" />
@@ -102,8 +102,7 @@ export default function VisitsDashboardPage({ filters, onBack, onOpenFilters, on
 
       <div className="px-4 py-2">
         <Card>
-          <h2 className="pb-3 text-base font-semibold text-gray-900">Customers Visit Management</h2>
-          <hr className="mb-3 border-gray-100" />
+          <h2 className="mb-3 text-base font-semibold text-gray-900">Customers Visit Management</h2>
 
           <div className="flex items-center gap-3 rounded-[4px] bg-gray-50 px-3 py-3">
             <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-600">
@@ -125,8 +124,7 @@ export default function VisitsDashboardPage({ filters, onBack, onOpenFilters, on
 
       <div className="px-4 py-2">
         <Card>
-          <h2 className="pb-3 text-base font-semibold text-gray-900">Insights</h2>
-          <hr className="mb-3 border-gray-100" />
+          <h2 className="mb-3 text-base font-semibold text-gray-900">Insights</h2>
           {matchesWorkingPeriod ? (
             <div className="flex flex-col gap-2">
               <InsightRow

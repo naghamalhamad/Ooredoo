@@ -86,7 +86,6 @@ export default function VisitManagementSection({
     <div className="px-4 py-2">
       <Card>
         <SectionHeader title="Customer visit Management" actionLabel="See all" onAction={onSeeAll} />
-        <hr className="mb-3 border-gray-100" />
 
         <DemoStateSwitcher value={demoState} onChange={setDemoState} />
 
@@ -137,7 +136,7 @@ export default function VisitManagementSection({
               <button
                 type="button"
                 onClick={onCreateNewVisit}
-                className="w-full rounded-full border border-rose-600 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50 active:bg-rose-100 transition-colors"
+                className="w-full rounded-full bg-rose-50 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-100 active:bg-rose-200 transition-colors"
               >
                 Create New Visit
               </button>

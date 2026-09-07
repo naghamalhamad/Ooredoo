@@ -12,7 +12,7 @@ export default function DoorPhotoCapturePage({ onBack, onClose, onSubmit }: Door
 
   return (
     <div className="flex flex-1 flex-col bg-white">
-      <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3">
+      <div className="flex items-center justify-between px-4 py-3">
         <button type="button" onClick={onBack} aria-label="Back" className="text-gray-900">
           <Icon name="arrowLeft" className="h-5 w-5" />
         </button>
@@ -44,7 +44,7 @@ export default function DoorPhotoCapturePage({ onBack, onClose, onSubmit }: Door
           <button
             type="button"
             onClick={() => setCaptured(true)}
-            className="flex w-full flex-col items-center gap-3 rounded-[4px] border-2 border-dashed border-gray-300 px-4 py-10 text-gray-400 hover:border-rose-400 hover:text-rose-600 transition-colors"
+            className="flex w-full flex-col items-center gap-3 rounded-[4px] bg-gray-100 px-4 py-10 text-gray-400 hover:bg-gray-200 hover:text-rose-600 transition-colors"
           >
             <Icon name="camera" className="h-9 w-9" />
             <span className="text-sm font-semibold">Tap to capture photo</span>

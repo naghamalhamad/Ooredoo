@@ -23,7 +23,7 @@ function DateField({ label, value, onChange }: { label: string; value: string; o
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="w-full rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-left text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
+          className="w-full rounded-[4px] bg-gray-100 px-3 py-2.5 text-left text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
         >
           {value}
         </button>
@@ -59,7 +59,7 @@ function SelectField({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full appearance-none rounded-[4px] border border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-900 focus:border-rose-400 focus:outline-none"
+        className="w-full appearance-none rounded-[4px] bg-gray-100 px-3 py-2.5 text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
       >
         <option value="">{placeholder}</option>
         {options.map((option) => (
@@ -127,7 +127,7 @@ export default function FiltersPage({ initialFilters, onBack, onApply }: Filters
         <button
           type="button"
           onClick={handleReset}
-          className="w-full rounded-full border border-rose-600 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50 active:bg-rose-100 transition-colors"
+          className="w-full rounded-full bg-rose-50 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-100 active:bg-rose-200 transition-colors"
         >
           Reset
         </button>

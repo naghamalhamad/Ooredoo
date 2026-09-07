@@ -13,7 +13,7 @@ export default function CustomerInterestPage({ onBack, onClose, onSubmit }: Cust
 
   return (
     <div className="flex flex-1 flex-col bg-white">
-      <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3">
+      <div className="flex items-center justify-between px-4 py-3">
         <button type="button" onClick={onBack} aria-label="Back" className="text-gray-900">
           <Icon name="arrowLeft" className="h-5 w-5" />
         </button>
@@ -37,19 +37,19 @@ export default function CustomerInterestPage({ onBack, onClose, onSubmit }: Cust
               type="button"
               onClick={() => setSelected(option)}
               aria-pressed={selected === option}
-              className={`flex items-center justify-between rounded-[4px] border px-4 py-3 text-left text-sm font-semibold transition-colors ${
+              className={`flex items-center justify-between rounded-[4px] px-4 py-3 text-left text-sm font-semibold transition-colors ${
                 selected === option
-                  ? 'border-rose-600 bg-rose-50 text-rose-600'
-                  : 'border-gray-200 bg-white text-gray-900 hover:bg-gray-50'
+                  ? 'bg-rose-50 text-rose-600'
+                  : 'bg-gray-50 text-gray-900 hover:bg-gray-100'
               }`}
             >
               {option}
               <span
-                className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full border-2 ${
-                  selected === option ? 'border-rose-600' : 'border-gray-300'
+                className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full ${
+                  selected === option ? 'bg-rose-600' : 'bg-gray-300'
                 }`}
               >
-                {selected === option && <span className="h-2 w-2 rounded-full bg-rose-600" />}
+                {selected === option && <span className="h-1.5 w-1.5 rounded-full bg-white" />}
               </span>
             </button>
           ))}

@@ -49,7 +49,7 @@ export default function VisitListPage({ onBack, onCreateNew, onSelectVisit }: Vi
           <input
             type="text"
             placeholder="Search"
-            className="h-11 w-full rounded-[4px] border border-gray-200 bg-gray-100 pl-3 pr-9 text-sm text-gray-700 placeholder:text-gray-400 focus:border-rose-400 focus:outline-none"
+            className="h-11 w-full rounded-[4px] bg-gray-100 pl-3 pr-9 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-300"
           />
           <Icon name="search" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
         </div>
