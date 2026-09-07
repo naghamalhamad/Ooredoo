@@ -9,8 +9,7 @@ import AreaVisitDetailsPage from './AreaVisitDetailsPage'
 import HomeVisitsPage from './HomeVisitsPage'
 import VisitsDashboardPage from './VisitsDashboardPage'
 import FiltersPage from './FiltersPage'
-import DoorStatusPage from './DoorStatusPage'
-import DoorPhotoCapturePage from './DoorPhotoCapturePage'
+import HomeDetailsModal from './HomeDetailsModal'
 import CustomerInterestPage from './CustomerInterestPage'
 import BottomNav, { type Page } from './BottomNav'
 import {
@@ -30,8 +29,6 @@ type Route =
   | 'homeVisits'
   | 'visitsDashboard'
   | 'filters'
-  | 'doorStatus'
-  | 'doorPhoto'
   | 'customerInterest'
 
 export default function DashboardScreen() {
@@ -39,6 +36,7 @@ export default function DashboardScreen() {
   const [stack, setStack] = useState<Route[]>(['tabs'])
   const [selectedVisit, setSelectedVisit] = useState<AreaVisit | null>(null)
   const [dashboardFilters, setDashboardFilters] = useState<DashboardFilters>(defaultDashboardFilters)
+  const [showHomeDetailsModal, setShowHomeDetailsModal] = useState(false)
   const current = stack[stack.length - 1]
 
   const push = (route: Route) => setStack((s) => [...s, route])
@@ -62,13 +60,21 @@ export default function DashboardScreen() {
     })
     setStack((s) => {
       let end = s.length
-      const transient: Route[] = ['doorStatus', 'doorPhoto', 'customerInterest']
+      const transient: Route[] = ['customerInterest']
       while (end > 0 && transient.includes(s[end - 1])) end--
       return s.slice(0, end)
     })
   }
 
-  const handleDoorClosed = () => addHomeVisit('Door Closed')
+  const handleDoorClosed = () => {
+    setShowHomeDetailsModal(false)
+    addHomeVisit('Door Closed')
+  }
+
+  const handleDoorOpen = () => {
+    setShowHomeDetailsModal(false)
+    push('customerInterest')
+  }
 
   const handleCustomerInterestSubmit = (option: CustomerInterestOption) => {
     addHomeVisit(customerInterestStatusMap[option])
@@ -80,7 +86,7 @@ export default function DashboardScreen() {
 
   const handleAddHomeVisit = () => {
     setSelectedVisit((visit) => (visit ? { ...visit, started: true } : visit))
-    push('doorStatus')
+    setShowHomeDetailsModal(true)
   }
 
   const handleEndAreaVisit = () => {
@@ -125,21 +131,8 @@ export default function DashboardScreen() {
           <HomeVisitsPage
             homeVisits={selectedVisit.homeVisits}
             onBack={pop}
-            onStartHomeVisit={() => push('doorStatus')}
+            onStartHomeVisit={() => setShowHomeDetailsModal(true)}
           />
-        )}
-
-        {current === 'doorStatus' && (
-          <DoorStatusPage
-            onBack={pop}
-            onClose={() => setStack(['tabs'])}
-            onDoorClosed={() => push('doorPhoto')}
-            onDoorOpen={() => push('customerInterest')}
-          />
-        )}
-
-        {current === 'doorPhoto' && (
-          <DoorPhotoCapturePage onBack={pop} onClose={() => setStack(['tabs'])} onSubmit={handleDoorClosed} />
         )}
 
         {current === 'customerInterest' && (
@@ -191,6 +184,14 @@ export default function DashboardScreen() {
           </>
         )}
       </div>
+
+      {showHomeDetailsModal && (
+        <HomeDetailsModal
+          onCancel={() => setShowHomeDetailsModal(false)}
+          onDoorOpen={handleDoorOpen}
+          onDoorClosed={handleDoorClosed}
+        />
+      )}
     </div>
   )
 }
