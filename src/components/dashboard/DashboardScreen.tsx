@@ -13,7 +13,6 @@ import DoorStatusPage from './DoorStatusPage'
 import CustomerInterestPage from './CustomerInterestPage'
 import BottomNav, { type Page } from './BottomNav'
 import {
-  homeAreaVisit,
   defaultDashboardFilters,
   dealerWorkingPeriod,
   customerInterestStatusMap,
@@ -156,7 +155,7 @@ export default function DashboardScreen() {
                   onCreateNewVisit={() => push('createVisit')}
                   onSeeAllVisits={() => push('visitList')}
                   onOverviewDashboard={() => push('visitsDashboard')}
-                  onViewVisitDetails={() => openVisitDetails(homeAreaVisit)}
+                  onViewVisitDetails={openVisitDetails}
                 />
               )}
               {page === 'Services' && <ServicesPage />}

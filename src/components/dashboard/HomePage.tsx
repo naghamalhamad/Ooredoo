@@ -10,6 +10,7 @@ import VisitManagementSection from './VisitManagementSection'
 import KPIsSection from './KPIsSection'
 import B2BActivitiesSection from './B2BActivitiesSection'
 import ChannelMemberOnboardingSection from './ChannelMemberOnboardingSection'
+import type { AreaVisit } from './visitsData'
 
 interface HomePageProps {
   userName?: string
@@ -17,7 +18,7 @@ interface HomePageProps {
   onCreateNewVisit?: () => void
   onSeeAllVisits?: () => void
   onOverviewDashboard?: () => void
-  onViewVisitDetails?: () => void
+  onViewVisitDetails?: (visit: AreaVisit) => void
 }
 
 export default function HomePage({

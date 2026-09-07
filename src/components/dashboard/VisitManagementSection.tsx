@@ -3,12 +3,13 @@ import Card from '../ui/Card'
 import SectionHeader from '../ui/SectionHeader'
 import Icon from '../icons/Icon'
 import VisitCard from './VisitCard'
+import { homeAreaVisits, type AreaVisit } from './visitsData'
 
 interface VisitManagementSectionProps {
   onCreateNewVisit?: () => void
   onSeeAll?: () => void
   onOverviewDashboard?: () => void
-  onViewDetails?: () => void
+  onViewDetails?: (visit: AreaVisit) => void
 }
 
 type DemoVisitState = 'none' | 'scheduled' | 'active'
@@ -128,7 +129,7 @@ export default function VisitManagementSection({
             <div className="mt-3 flex flex-col gap-2">
               <button
                 type="button"
-                onClick={onViewDetails}
+                onClick={() => onViewDetails?.(homeAreaVisits[demoState])}
                 className="w-full rounded-full bg-rose-600 py-2.5 text-sm font-semibold text-white hover:bg-rose-700 active:bg-rose-800 transition-colors"
               >
                 Visit Details

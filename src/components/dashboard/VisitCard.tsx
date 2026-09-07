@@ -25,21 +25,21 @@ export default function VisitCard(props: VisitCardProps) {
 
   return (
     <div className="rounded-[4px] bg-[#0047BB] p-4 text-white">
-      <div className="flex items-center justify-between">
-        <p className="text-lg font-bold">{title}</p>
+      <div className="flex items-center justify-between gap-2">
+        <p className="text-sm font-bold">{title}</p>
         {props.variant === 'scheduled' ? (
-          <span className="rounded-full bg-amber-400/25 px-3 py-1 text-xs font-medium text-amber-200">
+          <span className="flex-shrink-0 rounded-full bg-amber-400/25 px-2.5 py-0.5 text-[11px] font-medium text-amber-200">
             Scheduled
           </span>
         ) : (
-          <span className="rounded-full bg-emerald-400/25 px-3 py-1 text-xs font-medium text-emerald-200">
+          <span className="flex-shrink-0 rounded-full bg-emerald-400/25 px-2.5 py-0.5 text-[11px] font-medium text-emerald-200">
             Active
           </span>
         )}
       </div>
 
       {props.variant === 'scheduled' ? (
-        <div className="mt-4 flex items-center gap-3 rounded-[4px] bg-white/10 px-3 py-2.5">
+        <div className="mt-3 flex items-center gap-3 rounded-[4px] bg-white/10 px-3 py-2.5">
           <div className="flex h-11 w-11 flex-shrink-0 flex-col items-center justify-center rounded-[4px] bg-white/15">
             <span className="text-sm font-bold leading-none">{props.startDay}</span>
             <span className="text-[10px] leading-tight text-white/70">{props.startMonth}</span>
