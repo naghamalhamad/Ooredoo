@@ -6,7 +6,7 @@ interface EndAreaVisitModalProps {
 export default function EndAreaVisitModal({ onConfirm, onDiscard }: EndAreaVisitModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-6">
-      <div className="w-full max-w-xs rounded-[4px] bg-white p-5">
+      <div className="w-full max-w-xs rounded-[8px] bg-white p-5">
         <h2 className="text-base font-semibold text-gray-900">End Area Visit</h2>
         <p className="mt-2 text-sm text-gray-500">Are you sure you want to end the Area visit?</p>
 

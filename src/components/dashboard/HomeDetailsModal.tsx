@@ -26,7 +26,7 @@ export default function HomeDetailsModal({ onCancel, onDoorOpen, onDoorClosed }:
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-6">
-      <div className="w-full max-w-xs rounded-[4px] bg-white p-5">
+      <div className="w-full max-w-xs rounded-[8px] bg-white p-5">
         <h2 className="text-base font-semibold text-gray-900">Home Details</h2>
 
         <p className="mb-2 mt-4 text-sm font-semibold text-gray-900">Door Status</p>

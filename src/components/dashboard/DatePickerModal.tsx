@@ -43,7 +43,7 @@ export default function DatePickerModal({ initialDate, onCancel, onConfirm }: Da
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-6">
-      <div className="w-full max-w-xs overflow-hidden rounded-[4px] bg-white">
+      <div className="w-full max-w-xs overflow-hidden rounded-[8px] bg-white">
         <div className="bg-rose-600 px-5 py-4 text-white">
           <p className="text-sm">{selected.getFullYear()}</p>
           <p className="text-2xl font-semibold">{formatHeaderDate(selected)}</p>
