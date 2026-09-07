@@ -9,6 +9,8 @@ interface AreaVisitDetailsPageProps {
   onBack?: () => void
   onClose?: () => void
   onStartAreaVisit?: () => void
+  onAddHomeVisit?: () => void
+  onViewHomeVisits?: () => void
 }
 
 function GrayField({ label, value, disabled }: { label: string; value: string; disabled?: boolean }) {
@@ -96,10 +98,18 @@ function LocationRow({ label, value }: { label: string; value: string }) {
   )
 }
 
-export default function AreaVisitDetailsPage({ visit, onBack, onClose, onStartAreaVisit }: AreaVisitDetailsPageProps) {
+export default function AreaVisitDetailsPage({
+  visit,
+  onBack,
+  onClose,
+  onStartAreaVisit,
+  onAddHomeVisit,
+  onViewHomeVisits,
+}: AreaVisitDetailsPageProps) {
   const disabled = visit.status !== 'Scheduled'
   const showCompletedBadge = visit.status !== 'Scheduled' && visit.status !== 'Canceled'
-  const showStartButtons = visit.status === 'Active'
+  const showStartButtons = visit.status === 'Active' && !visit.started
+  const showHomeVisitsSection = visit.status === 'Active' && visit.started
 
   return (
     <div className="flex flex-1 flex-col overflow-y-auto bg-gray-100">
@@ -148,6 +158,49 @@ export default function AreaVisitDetailsPage({ visit, onBack, onClose, onStartAr
           <LocationRow label="Wilaya" value={visit.wilaya} />
           <LocationRow label="locality" value={visit.locality} />
         </div>
+
+        {showHomeVisitsSection && (
+          <>
+            <p className="mb-3 mt-6 text-sm font-semibold text-gray-900">Home Visits</p>
+            {visit.homeVisits.length === 0 ? (
+              <div className="flex flex-col items-center gap-2 rounded-[4px] bg-gray-50 px-4 py-6 text-center">
+                <span className="flex h-9 w-9 items-center justify-center rounded-[4px] bg-white text-gray-400 shadow-sm">
+                  <Icon name="info" className="h-5 w-5" />
+                </span>
+                <p className="text-xs text-gray-400">press the button below to Add Home Visit</p>
+                <button
+                  type="button"
+                  onClick={onAddHomeVisit}
+                  className="mt-1 flex items-center gap-1.5 text-sm font-semibold text-rose-600 hover:text-rose-700"
+                >
+                  <Icon name="plus" className="h-4 w-4" />
+                  Start New Home Visit
+                </button>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={onViewHomeVisits}
+                  className="flex w-full items-center justify-between rounded-[4px] bg-gray-50 px-3 py-2.5 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+                >
+                  <span className="text-sm font-medium text-gray-800">
+                    {visit.homeVisits.length} Home Visit{visit.homeVisits.length === 1 ? '' : 's'} recorded
+                  </span>
+                  <Icon name="chevronRight" className="h-4 w-4 text-gray-400" />
+                </button>
+                <button
+                  type="button"
+                  onClick={onAddHomeVisit}
+                  className="flex w-full items-center justify-center gap-1.5 rounded-full border border-rose-600 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50 active:bg-rose-100 transition-colors"
+                >
+                  <Icon name="plus" className="h-4 w-4" />
+                  Add Home Visit
+                </button>
+              </div>
+            )}
+          </>
+        )}
       </div>
 
       {showStartButtons && (
@@ -161,7 +214,7 @@ export default function AreaVisitDetailsPage({ visit, onBack, onClose, onStartAr
           </button>
           <button
             type="button"
-            onClick={onStartAreaVisit}
+            onClick={onAddHomeVisit}
             className="w-full rounded-full border border-rose-600 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50 active:bg-rose-100 transition-colors"
           >
             Start Area Visit & Add Home Visit

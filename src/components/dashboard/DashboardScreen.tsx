@@ -59,8 +59,9 @@ export default function DashboardScreen() {
       return { ...visit, homeVisits: [newVisit, ...visit.homeVisits], completedHomeVisits: visit.completedHomeVisits + 1 }
     })
     setStack((s) => {
-      const homeVisitsIndex = s.lastIndexOf('homeVisits')
-      return homeVisitsIndex >= 0 ? s.slice(0, homeVisitsIndex + 1) : s
+      let end = s.length
+      while (end > 0 && (s[end - 1] === 'doorStatus' || s[end - 1] === 'customerInterest')) end--
+      return s.slice(0, end)
     })
   }
 
@@ -68,6 +69,15 @@ export default function DashboardScreen() {
 
   const handleCustomerInterestSubmit = (option: CustomerInterestOption) => {
     addHomeVisit(customerInterestStatusMap[option])
+  }
+
+  const handleStartAreaVisit = () => {
+    setSelectedVisit((visit) => (visit ? { ...visit, started: true } : visit))
+  }
+
+  const handleAddHomeVisit = () => {
+    setSelectedVisit((visit) => (visit ? { ...visit, started: true } : visit))
+    push('doorStatus')
   }
 
   const removeFilter = (key: 'dateRange' | 'region' | 'wilaya') => {
@@ -96,7 +106,9 @@ export default function DashboardScreen() {
             visit={selectedVisit}
             onBack={pop}
             onClose={() => setStack(['tabs'])}
-            onStartAreaVisit={() => push('homeVisits')}
+            onStartAreaVisit={handleStartAreaVisit}
+            onAddHomeVisit={handleAddHomeVisit}
+            onViewHomeVisits={() => push('homeVisits')}
           />
         )}
 
