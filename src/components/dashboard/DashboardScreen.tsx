@@ -11,6 +11,7 @@ import VisitsDashboardPage from './VisitsDashboardPage'
 import FiltersPage from './FiltersPage'
 import HomeDetailsModal from './HomeDetailsModal'
 import CustomerInterestPage from './CustomerInterestPage'
+import CustomerDetailsPage from './CustomerDetailsPage'
 import BottomNav, { type Page } from './BottomNav'
 import {
   defaultDashboardFilters,
@@ -30,6 +31,7 @@ type Route =
   | 'visitsDashboard'
   | 'filters'
   | 'customerInterest'
+  | 'customerDetails'
 
 export default function DashboardScreen() {
   const [page, setPage] = useState<Page>('Home')
@@ -47,20 +49,23 @@ export default function DashboardScreen() {
     push('visitDetails')
   }
 
-  const addHomeVisit = (status: AreaVisit['homeVisits'][number]['status'], hotLead = false) => {
+  const addHomeVisit = (
+    status: AreaVisit['homeVisits'][number]['status'],
+    options?: { hotLead?: boolean; title?: string },
+  ) => {
     setSelectedVisit((visit) => {
       if (!visit) return visit
       const newVisit = {
         status,
-        title: status === 'Door Closed' ? 'Al Ghubrah Ash Shamaliyah, Muscat' : 'Ahmad Mohammad',
+        title: options?.title || (status === 'Door Closed' ? 'Al Ghubrah Ash Shamaliyah, Muscat' : 'Ahmad Mohammad'),
         datetime: new Date().toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
-        hotLead,
+        hotLead: options?.hotLead ?? false,
       }
       return { ...visit, homeVisits: [newVisit, ...visit.homeVisits], completedHomeVisits: visit.completedHomeVisits + 1 }
     })
     setStack((s) => {
       let end = s.length
-      const transient: Route[] = ['customerInterest']
+      const transient: Route[] = ['customerInterest', 'customerDetails']
       while (end > 0 && transient.includes(s[end - 1])) end--
       return s.slice(0, end)
     })
@@ -77,7 +82,15 @@ export default function DashboardScreen() {
   }
 
   const handleCustomerInterestSubmit = (option: CustomerInterestOption) => {
+    if (option === 'Interested Later') {
+      push('customerDetails')
+      return
+    }
     addHomeVisit(customerInterestStatusMap[option])
+  }
+
+  const handleCustomerDetailsSubmit = (customerName: string) => {
+    addHomeVisit('Interested Later', { hotLead: true, title: customerName })
   }
 
   const handleStartAreaVisit = () => {
@@ -141,6 +154,10 @@ export default function DashboardScreen() {
             onClose={() => setStack(['tabs'])}
             onSubmit={handleCustomerInterestSubmit}
           />
+        )}
+
+        {current === 'customerDetails' && (
+          <CustomerDetailsPage onBack={pop} onSubmit={handleCustomerDetailsSubmit} />
         )}
 
         {current === 'visitsDashboard' && (
