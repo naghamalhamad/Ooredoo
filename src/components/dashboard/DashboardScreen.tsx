@@ -9,16 +9,29 @@ import AreaVisitDetailsPage from './AreaVisitDetailsPage'
 import HomeVisitsPage from './HomeVisitsPage'
 import VisitsDashboardPage from './VisitsDashboardPage'
 import FiltersPage from './FiltersPage'
+import DoorStatusPage from './DoorStatusPage'
+import CustomerInterestPage from './CustomerInterestPage'
 import BottomNav, { type Page } from './BottomNav'
 import {
   homeAreaVisit,
   defaultDashboardFilters,
   dealerWorkingPeriod,
+  customerInterestStatusMap,
   type AreaVisit,
   type DashboardFilters,
+  type CustomerInterestOption,
 } from './visitsData'
 
-type Route = 'tabs' | 'visitList' | 'createVisit' | 'visitDetails' | 'homeVisits' | 'visitsDashboard' | 'filters'
+type Route =
+  | 'tabs'
+  | 'visitList'
+  | 'createVisit'
+  | 'visitDetails'
+  | 'homeVisits'
+  | 'visitsDashboard'
+  | 'filters'
+  | 'doorStatus'
+  | 'customerInterest'
 
 export default function DashboardScreen() {
   const [page, setPage] = useState<Page>('Home')
@@ -33,6 +46,29 @@ export default function DashboardScreen() {
   const openVisitDetails = (visit: AreaVisit) => {
     setSelectedVisit(visit)
     push('visitDetails')
+  }
+
+  const addHomeVisit = (status: AreaVisit['homeVisits'][number]['status'], hotLead = false) => {
+    setSelectedVisit((visit) => {
+      if (!visit) return visit
+      const newVisit = {
+        status,
+        title: 'Ahmad Mohammad',
+        datetime: new Date().toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
+        hotLead,
+      }
+      return { ...visit, homeVisits: [newVisit, ...visit.homeVisits], completedHomeVisits: visit.completedHomeVisits + 1 }
+    })
+    setStack((s) => {
+      const homeVisitsIndex = s.lastIndexOf('homeVisits')
+      return homeVisitsIndex >= 0 ? s.slice(0, homeVisitsIndex + 1) : s
+    })
+  }
+
+  const handleDoorClosed = () => addHomeVisit('Door Closed')
+
+  const handleCustomerInterestSubmit = (option: CustomerInterestOption) => {
+    addHomeVisit(customerInterestStatusMap[option])
   }
 
   const removeFilter = (key: 'dateRange' | 'region' | 'wilaya') => {
@@ -66,7 +102,28 @@ export default function DashboardScreen() {
         )}
 
         {current === 'homeVisits' && selectedVisit && (
-          <HomeVisitsPage homeVisits={selectedVisit.homeVisits} onBack={pop} />
+          <HomeVisitsPage
+            homeVisits={selectedVisit.homeVisits}
+            onBack={pop}
+            onStartHomeVisit={() => push('doorStatus')}
+          />
+        )}
+
+        {current === 'doorStatus' && (
+          <DoorStatusPage
+            onBack={pop}
+            onClose={() => setStack(['tabs'])}
+            onDoorClosed={handleDoorClosed}
+            onDoorOpen={() => push('customerInterest')}
+          />
+        )}
+
+        {current === 'customerInterest' && (
+          <CustomerInterestPage
+            onBack={pop}
+            onClose={() => setStack(['tabs'])}
+            onSubmit={handleCustomerInterestSubmit}
+          />
         )}
 
         {current === 'visitsDashboard' && (

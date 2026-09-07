@@ -64,6 +64,8 @@ export type IconName =
   | 'trendUp'
   | 'medal'
   | 'hourglass'
+  | 'lockClosed'
+  | 'lockOpen'
 
 interface IconProps {
   name: IconName
@@ -532,6 +534,22 @@ export default function Icon({ name, className = 'w-5 h-5' }: IconProps) {
         <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
           <path d="M6 3h12M6 21h12" />
           <path d="M7 3c0 4 3 5 5 6-2 1-5 2-5 6M17 3c0 4-3 5-5 6 2 1 5 2 5 6" />
+        </svg>
+      )
+    case 'lockClosed':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <rect x="5" y="11" width="14" height="9" rx="2" />
+          <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+          <circle cx="12" cy="15.5" r="1.2" fill="currentColor" stroke="none" />
+        </svg>
+      )
+    case 'lockOpen':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <rect x="5" y="11" width="14" height="9" rx="2" />
+          <path d="M8 11V7a4 4 0 0 1 7.5-1.9" />
+          <circle cx="12" cy="15.5" r="1.2" fill="currentColor" stroke="none" />
         </svg>
       )
     case 'more':

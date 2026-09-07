@@ -48,6 +48,27 @@ export interface AreaVisit {
   locality: string
   completedHomeVisits: number
   homeVisits: HomeVisit[]
+  started?: boolean
+}
+
+export type CustomerInterestOption =
+  | 'Interested, start activation'
+  | 'Interested Later'
+  | 'Not Interested, start survey'
+  | 'Not interested at all'
+
+export const customerInterestOptions: CustomerInterestOption[] = [
+  'Interested, start activation',
+  'Interested Later',
+  'Not Interested, start survey',
+  'Not interested at all',
+]
+
+export const customerInterestStatusMap: Record<CustomerInterestOption, HomeVisitStatus> = {
+  'Interested, start activation': 'Activation Completed',
+  'Interested Later': 'Interested Later',
+  'Not Interested, start survey': 'Not Interested',
+  'Not interested at all': 'Not interested at all',
 }
 
 export const areaVisits: AreaVisit[] = [
