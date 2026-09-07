@@ -6,6 +6,7 @@ import { formatShortDate, parseShortDate } from './dateUtils'
 interface CustomerDetailsPageProps {
   onBack?: () => void
   onSubmit?: (customerName: string) => void
+  submitLabel?: string
 }
 
 function TextField({
@@ -86,7 +87,7 @@ function DateField({ label, initialValue }: { label: string; initialValue: strin
   )
 }
 
-export default function CustomerDetailsPage({ onBack, onSubmit }: CustomerDetailsPageProps) {
+export default function CustomerDetailsPage({ onBack, onSubmit, submitLabel = 'Submit' }: CustomerDetailsPageProps) {
   const [customerName, setCustomerName] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [street, setStreet] = useState('')
@@ -138,7 +139,7 @@ export default function CustomerDetailsPage({ onBack, onSubmit }: CustomerDetail
           onClick={() => onSubmit?.(customerName.trim())}
           className="w-full rounded-full bg-rose-600 py-2.5 text-sm font-semibold text-white hover:bg-rose-700 active:bg-rose-800 transition-colors"
         >
-          Submit
+          {submitLabel}
         </button>
       </div>
     </div>

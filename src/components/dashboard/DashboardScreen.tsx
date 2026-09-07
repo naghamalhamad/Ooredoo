@@ -12,6 +12,9 @@ import FiltersPage from './FiltersPage'
 import HomeDetailsModal from './HomeDetailsModal'
 import CustomerInterestPage from './CustomerInterestPage'
 import CustomerDetailsPage from './CustomerDetailsPage'
+import SurveyIntroPage from './SurveyIntroPage'
+import SurveyQuestionsPage from './SurveyQuestionsPage'
+import HomeVisitCompletedPage from './HomeVisitCompletedPage'
 import BottomNav, { type Page } from './BottomNav'
 import {
   defaultDashboardFilters,
@@ -32,6 +35,17 @@ type Route =
   | 'filters'
   | 'customerInterest'
   | 'customerDetails'
+  | 'surveyIntro'
+  | 'surveyQuestions'
+  | 'homeVisitCompleted'
+
+const transientHomeVisitRoutes: Route[] = [
+  'customerInterest',
+  'customerDetails',
+  'surveyIntro',
+  'surveyQuestions',
+  'homeVisitCompleted',
+]
 
 export default function DashboardScreen() {
   const [page, setPage] = useState<Page>('Home')
@@ -39,6 +53,8 @@ export default function DashboardScreen() {
   const [selectedVisit, setSelectedVisit] = useState<AreaVisit | null>(null)
   const [dashboardFilters, setDashboardFilters] = useState<DashboardFilters>(defaultDashboardFilters)
   const [showHomeDetailsModal, setShowHomeDetailsModal] = useState(false)
+  const [customerDetailsIntent, setCustomerDetailsIntent] = useState<'later' | 'survey'>('later')
+  const [pendingCustomerName, setPendingCustomerName] = useState('')
   const current = stack[stack.length - 1]
 
   const push = (route: Route) => setStack((s) => [...s, route])
@@ -63,10 +79,12 @@ export default function DashboardScreen() {
       }
       return { ...visit, homeVisits: [newVisit, ...visit.homeVisits], completedHomeVisits: visit.completedHomeVisits + 1 }
     })
+  }
+
+  const closeHomeVisitFlow = () => {
     setStack((s) => {
       let end = s.length
-      const transient: Route[] = ['customerInterest', 'customerDetails']
-      while (end > 0 && transient.includes(s[end - 1])) end--
+      while (end > 0 && transientHomeVisitRoutes.includes(s[end - 1])) end--
       return s.slice(0, end)
     })
   }
@@ -74,6 +92,7 @@ export default function DashboardScreen() {
   const handleDoorClosed = () => {
     setShowHomeDetailsModal(false)
     addHomeVisit('Door Closed')
+    closeHomeVisitFlow()
   }
 
   const handleDoorOpen = () => {
@@ -83,14 +102,32 @@ export default function DashboardScreen() {
 
   const handleCustomerInterestSubmit = (option: CustomerInterestOption) => {
     if (option === 'Interested Later') {
+      setCustomerDetailsIntent('later')
+      push('customerDetails')
+      return
+    }
+    if (option === 'Not Interested, start survey') {
+      setCustomerDetailsIntent('survey')
       push('customerDetails')
       return
     }
     addHomeVisit(customerInterestStatusMap[option])
+    closeHomeVisitFlow()
   }
 
   const handleCustomerDetailsSubmit = (customerName: string) => {
+    if (customerDetailsIntent === 'survey') {
+      setPendingCustomerName(customerName)
+      push('surveyIntro')
+      return
+    }
     addHomeVisit('Interested Later', { hotLead: true, title: customerName })
+    closeHomeVisitFlow()
+  }
+
+  const handleSurveyComplete = () => {
+    addHomeVisit('Not Interested', { title: pendingCustomerName })
+    push('homeVisitCompleted')
   }
 
   const handleStartAreaVisit = () => {
@@ -157,7 +194,29 @@ export default function DashboardScreen() {
         )}
 
         {current === 'customerDetails' && (
-          <CustomerDetailsPage onBack={pop} onSubmit={handleCustomerDetailsSubmit} />
+          <CustomerDetailsPage
+            onBack={pop}
+            onSubmit={handleCustomerDetailsSubmit}
+            submitLabel={customerDetailsIntent === 'survey' ? 'Start Survey' : 'Submit'}
+          />
+        )}
+
+        {current === 'surveyIntro' && (
+          <SurveyIntroPage
+            visitDate={new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+            surveyedBy="Omer"
+            onBack={pop}
+            onClose={() => setStack(['tabs'])}
+            onStart={() => push('surveyQuestions')}
+          />
+        )}
+
+        {current === 'surveyQuestions' && (
+          <SurveyQuestionsPage onBack={pop} onClose={() => setStack(['tabs'])} onComplete={handleSurveyComplete} />
+        )}
+
+        {current === 'homeVisitCompleted' && (
+          <HomeVisitCompletedPage onBack={closeHomeVisitFlow} onClose={closeHomeVisitFlow} onDone={closeHomeVisitFlow} />
         )}
 
         {current === 'visitsDashboard' && (
