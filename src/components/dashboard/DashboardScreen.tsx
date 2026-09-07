@@ -10,6 +10,7 @@ import HomeVisitsPage from './HomeVisitsPage'
 import VisitsDashboardPage from './VisitsDashboardPage'
 import FiltersPage from './FiltersPage'
 import DoorStatusPage from './DoorStatusPage'
+import DoorPhotoCapturePage from './DoorPhotoCapturePage'
 import CustomerInterestPage from './CustomerInterestPage'
 import BottomNav, { type Page } from './BottomNav'
 import {
@@ -30,6 +31,7 @@ type Route =
   | 'visitsDashboard'
   | 'filters'
   | 'doorStatus'
+  | 'doorPhoto'
   | 'customerInterest'
 
 export default function DashboardScreen() {
@@ -52,7 +54,7 @@ export default function DashboardScreen() {
       if (!visit) return visit
       const newVisit = {
         status,
-        title: 'Ahmad Mohammad',
+        title: status === 'Door Closed' ? 'Al Ghubrah Ash Shamaliyah, Muscat' : 'Ahmad Mohammad',
         datetime: new Date().toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
         hotLead,
       }
@@ -60,7 +62,8 @@ export default function DashboardScreen() {
     })
     setStack((s) => {
       let end = s.length
-      while (end > 0 && (s[end - 1] === 'doorStatus' || s[end - 1] === 'customerInterest')) end--
+      const transient: Route[] = ['doorStatus', 'doorPhoto', 'customerInterest']
+      while (end > 0 && transient.includes(s[end - 1])) end--
       return s.slice(0, end)
     })
   }
@@ -78,6 +81,11 @@ export default function DashboardScreen() {
   const handleAddHomeVisit = () => {
     setSelectedVisit((visit) => (visit ? { ...visit, started: true } : visit))
     push('doorStatus')
+  }
+
+  const handleEndAreaVisit = () => {
+    setSelectedVisit((visit) => (visit ? { ...visit, status: 'Completed' } : visit))
+    setStack(['tabs'])
   }
 
   const removeFilter = (key: 'dateRange' | 'region' | 'wilaya') => {
@@ -109,6 +117,7 @@ export default function DashboardScreen() {
             onStartAreaVisit={handleStartAreaVisit}
             onAddHomeVisit={handleAddHomeVisit}
             onViewHomeVisits={() => push('homeVisits')}
+            onEndAreaVisit={handleEndAreaVisit}
           />
         )}
 
@@ -124,9 +133,13 @@ export default function DashboardScreen() {
           <DoorStatusPage
             onBack={pop}
             onClose={() => setStack(['tabs'])}
-            onDoorClosed={handleDoorClosed}
+            onDoorClosed={() => push('doorPhoto')}
             onDoorOpen={() => push('customerInterest')}
           />
+        )}
+
+        {current === 'doorPhoto' && (
+          <DoorPhotoCapturePage onBack={pop} onClose={() => setStack(['tabs'])} onSubmit={handleDoorClosed} />
         )}
 
         {current === 'customerInterest' && (

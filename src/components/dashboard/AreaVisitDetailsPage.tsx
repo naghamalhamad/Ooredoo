@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Icon from '../icons/Icon'
 import DatePickerModal from './DatePickerModal'
+import EndAreaVisitModal from './EndAreaVisitModal'
+import HomeVisitRow from './HomeVisitRow'
 import type { AreaVisit } from './visitsData'
 import { formatShortDate, parseShortDate } from './dateUtils'
 
@@ -11,6 +13,7 @@ interface AreaVisitDetailsPageProps {
   onStartAreaVisit?: () => void
   onAddHomeVisit?: () => void
   onViewHomeVisits?: () => void
+  onEndAreaVisit?: () => void
 }
 
 function GrayField({ label, value, disabled }: { label: string; value: string; disabled?: boolean }) {
@@ -105,7 +108,9 @@ export default function AreaVisitDetailsPage({
   onStartAreaVisit,
   onAddHomeVisit,
   onViewHomeVisits,
+  onEndAreaVisit,
 }: AreaVisitDetailsPageProps) {
+  const [showEndConfirm, setShowEndConfirm] = useState(false)
   const disabled = visit.status !== 'Scheduled'
   const showCompletedBadge = visit.status !== 'Scheduled' && visit.status !== 'Canceled'
   const showStartButtons = visit.status === 'Active' && !visit.started
@@ -161,7 +166,19 @@ export default function AreaVisitDetailsPage({
 
         {showHomeVisitsSection && (
           <>
-            <p className="mb-3 mt-6 text-sm font-semibold text-gray-900">Home Visits</p>
+            <div className="mb-3 mt-6 flex items-center justify-between">
+              <p className="text-sm font-semibold text-gray-900">Home Visits</p>
+              {visit.homeVisits.length > 0 && (
+                <button
+                  type="button"
+                  onClick={onViewHomeVisits}
+                  className="text-sm font-semibold text-rose-600 hover:text-rose-700"
+                >
+                  See All Visits
+                </button>
+              )}
+            </div>
+
             {visit.homeVisits.length === 0 ? (
               <div className="flex flex-col items-center gap-2 rounded-[4px] bg-gray-50 px-4 py-6 text-center">
                 <span className="flex h-9 w-9 items-center justify-center rounded-[4px] bg-white text-gray-400 shadow-sm">
@@ -179,23 +196,14 @@ export default function AreaVisitDetailsPage({
               </div>
             ) : (
               <div className="flex flex-col gap-2">
-                <button
-                  type="button"
-                  onClick={onViewHomeVisits}
-                  className="flex w-full items-center justify-between rounded-[4px] bg-gray-50 px-3 py-2.5 hover:bg-gray-100 active:bg-gray-200 transition-colors"
-                >
-                  <span className="text-sm font-medium text-gray-800">
-                    {visit.homeVisits.length} Home Visit{visit.homeVisits.length === 1 ? '' : 's'} recorded
-                  </span>
-                  <Icon name="chevronRight" className="h-4 w-4 text-gray-400" />
-                </button>
+                <HomeVisitRow {...visit.homeVisits[0]} />
                 <button
                   type="button"
                   onClick={onAddHomeVisit}
-                  className="flex w-full items-center justify-center gap-1.5 rounded-full border border-rose-600 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50 active:bg-rose-100 transition-colors"
+                  className="flex items-center justify-center gap-1.5 rounded-[4px] bg-white py-3 text-sm font-semibold text-rose-600 shadow-sm hover:bg-gray-50 transition-colors"
                 >
                   <Icon name="plus" className="h-4 w-4" />
-                  Add Home Visit
+                  Start New Home Visit
                 </button>
               </div>
             )}
@@ -220,6 +228,28 @@ export default function AreaVisitDetailsPage({
             Start Area Visit & Add Home Visit
           </button>
         </div>
+      )}
+
+      {showHomeVisitsSection && (
+        <div className="px-4 pb-4">
+          <button
+            type="button"
+            onClick={() => setShowEndConfirm(true)}
+            className="w-full rounded-full bg-rose-600 py-2.5 text-sm font-semibold text-white hover:bg-rose-700 active:bg-rose-800 transition-colors"
+          >
+            End Area Visit
+          </button>
+        </div>
+      )}
+
+      {showEndConfirm && (
+        <EndAreaVisitModal
+          onConfirm={() => {
+            setShowEndConfirm(false)
+            onEndAreaVisit?.()
+          }}
+          onDiscard={() => setShowEndConfirm(false)}
+        />
       )}
     </div>
   )

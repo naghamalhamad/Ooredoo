@@ -66,6 +66,7 @@ export type IconName =
   | 'hourglass'
   | 'lockClosed'
   | 'lockOpen'
+  | 'camera'
 
 interface IconProps {
   name: IconName
@@ -550,6 +551,13 @@ export default function Icon({ name, className = 'w-5 h-5' }: IconProps) {
           <rect x="5" y="11" width="14" height="9" rx="2" />
           <path d="M8 11V7a4 4 0 0 1 7.5-1.9" />
           <circle cx="12" cy="15.5" r="1.2" fill="currentColor" stroke="none" />
+        </svg>
+      )
+    case 'camera':
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...strokeProps}>
+          <path d="M4 8h3l1.5-2.5h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" />
+          <circle cx="12" cy="13.5" r="3.3" />
         </svg>
       )
     case 'more':
