@@ -27,7 +27,7 @@ export default function HomeVisitRow({ status, title, datetime, hotLead }: HomeV
   return (
     <button
       type="button"
-      className="flex w-full items-center justify-between rounded-[4px] bg-white px-4 py-3 text-left shadow-sm hover:bg-gray-50 transition-colors"
+      className="flex w-full items-center justify-between rounded-[4px] bg-white px-4 py-3 text-left hover:bg-gray-50 transition-colors"
     >
       <div>
         <StatusBadge status={status} />

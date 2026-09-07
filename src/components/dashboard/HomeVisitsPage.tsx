@@ -47,7 +47,7 @@ export default function HomeVisitsPage({ homeVisits, onBack, onStartHomeVisit }:
 
       {isEmpty ? (
         <div className="flex flex-1 flex-col items-center justify-center gap-2 px-4">
-          <span className="flex h-9 w-9 items-center justify-center rounded-[4px] bg-white text-gray-400 shadow-sm">
+          <span className="flex h-9 w-9 items-center justify-center rounded-[4px] bg-white text-gray-400">
             <Icon name="info" className="h-5 w-5" />
           </span>
           <p className="text-sm font-semibold text-gray-900">No Home Visit</p>

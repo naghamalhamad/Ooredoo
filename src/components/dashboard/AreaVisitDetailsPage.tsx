@@ -181,7 +181,7 @@ export default function AreaVisitDetailsPage({
 
             {visit.homeVisits.length === 0 ? (
               <div className="flex flex-col items-center gap-2 rounded-[4px] bg-gray-50 px-4 py-6 text-center">
-                <span className="flex h-9 w-9 items-center justify-center rounded-[4px] bg-white text-gray-400 shadow-sm">
+                <span className="flex h-9 w-9 items-center justify-center rounded-[4px] bg-white text-gray-400">
                   <Icon name="info" className="h-5 w-5" />
                 </span>
                 <p className="text-xs text-gray-400">press the button below to Add Home Visit</p>
@@ -200,7 +200,7 @@ export default function AreaVisitDetailsPage({
                 <button
                   type="button"
                   onClick={onAddHomeVisit}
-                  className="flex items-center justify-center gap-1.5 rounded-[4px] bg-white py-3 text-sm font-semibold text-rose-600 shadow-sm hover:bg-gray-50 transition-colors"
+                  className="flex items-center justify-center gap-1.5 rounded-[4px] bg-white py-3 text-sm font-semibold text-rose-600 hover:bg-gray-50 transition-colors"
                 >
                   <Icon name="plus" className="h-4 w-4" />
                   Start New Home Visit
