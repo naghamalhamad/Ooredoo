@@ -24,7 +24,7 @@ export default function CustomerInterestPage({ onBack, onClose, onSubmit }: Cust
       </div>
 
       <div className="flex-1 px-4 py-6">
-        <div className="mb-6 flex items-center gap-2 rounded-[4px] bg-emerald-50 px-3 py-2.5">
+        <div className="mb-6 flex items-center gap-2 rounded-[8px] bg-emerald-50 px-3 py-2.5">
           <Icon name="lockOpen" className="h-4 w-4 flex-shrink-0 text-emerald-600" />
           <span className="text-sm font-medium text-emerald-600">Door Open</span>
         </div>
@@ -37,7 +37,7 @@ export default function CustomerInterestPage({ onBack, onClose, onSubmit }: Cust
               type="button"
               onClick={() => setSelected(option)}
               aria-pressed={selected === option}
-              className={`flex items-center justify-between rounded-[4px] px-4 py-3 text-left text-sm font-semibold transition-colors ${
+              className={`flex items-center justify-between rounded-[8px] px-4 py-3 text-left text-sm font-semibold transition-colors ${
                 selected === option
                   ? 'bg-rose-50 text-rose-600'
                   : 'bg-gray-50 text-gray-900 hover:bg-gray-100'

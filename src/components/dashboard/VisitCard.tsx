@@ -24,7 +24,7 @@ export default function VisitCard(props: VisitCardProps) {
   const { title, location } = props
 
   return (
-    <div className="rounded-[4px] bg-[#0047BB] p-4 text-white">
+    <div className="rounded-[8px] bg-[#0047BB] p-4 text-white">
       <div className="flex items-center justify-between gap-2">
         <p className="text-sm font-bold">{title}</p>
         {props.variant === 'scheduled' ? (
@@ -39,8 +39,8 @@ export default function VisitCard(props: VisitCardProps) {
       </div>
 
       {props.variant === 'scheduled' ? (
-        <div className="mt-3 flex items-center gap-3 rounded-[4px] bg-white/10 px-3 py-2.5">
-          <div className="flex h-11 w-11 flex-shrink-0 flex-col items-center justify-center rounded-[4px] bg-white/15">
+        <div className="mt-3 flex items-center gap-3 rounded-[8px] bg-white/10 px-3 py-2.5">
+          <div className="flex h-11 w-11 flex-shrink-0 flex-col items-center justify-center rounded-[8px] bg-white/15">
             <span className="text-sm font-bold leading-none">{props.startDay}</span>
             <span className="text-[10px] leading-tight text-white/70">{props.startMonth}</span>
           </div>
@@ -53,7 +53,7 @@ export default function VisitCard(props: VisitCardProps) {
       ) : (
         <>
           <p className="mt-1 text-xs text-white/70">Started {props.startedDate}</p>
-          <div className="mt-3 flex items-center gap-2 rounded-[4px] bg-white/10 px-3 py-2.5">
+          <div className="mt-3 flex items-center gap-2 rounded-[8px] bg-white/10 px-3 py-2.5">
             <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-emerald-400/25 text-emerald-300">
               <Icon name="checkCircle" className="h-3.5 w-3.5" />
             </span>
@@ -63,7 +63,7 @@ export default function VisitCard(props: VisitCardProps) {
         </>
       )}
 
-      <div className="mt-2 flex items-center gap-2 rounded-[4px] bg-white/10 px-3 py-2.5 text-sm">
+      <div className="mt-2 flex items-center gap-2 rounded-[8px] bg-white/10 px-3 py-2.5 text-sm">
         <Icon name="mapPin" className="h-4 w-4 flex-shrink-0" />
         <span>{location}</span>
       </div>

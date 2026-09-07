@@ -33,7 +33,7 @@ const demoVisit = {
 
 function DemoStateSwitcher({ value, onChange }: { value: DemoVisitState; onChange: (v: DemoVisitState) => void }) {
   return (
-    <div className="mb-3 flex items-center gap-2 rounded-[4px] bg-gray-50 px-2 py-1.5">
+    <div className="mb-3 flex items-center gap-2 rounded-[8px] bg-gray-50 px-2 py-1.5">
       <span className="pl-1 text-[10px] font-semibold uppercase tracking-wide text-gray-400">Demo</span>
       <div className="flex flex-1 gap-1">
         {demoStateOptions.map((option) => (
@@ -56,8 +56,8 @@ function DemoStateSwitcher({ value, onChange }: { value: DemoVisitState; onChang
 
 function NoVisitState({ onStartNewAreaVisit }: { onStartNewAreaVisit?: () => void }) {
   return (
-    <div className="flex flex-col items-center gap-2 rounded-[4px] bg-gray-50 px-4 py-6 text-center">
-      <span className="flex h-9 w-9 items-center justify-center rounded-[4px] bg-white text-gray-400">
+    <div className="flex flex-col items-center gap-2 rounded-[8px] bg-gray-50 px-4 py-6 text-center">
+      <span className="flex h-9 w-9 items-center justify-center rounded-[8px] bg-white text-gray-400">
         <Icon name="info" className="h-5 w-5" />
       </span>
       <p className="text-sm font-semibold text-gray-900">No active and scheduled visits</p>
@@ -92,7 +92,7 @@ export default function VisitManagementSection({
         <button
           type="button"
           onClick={onOverviewDashboard}
-          className="mb-3 flex w-full items-center gap-3 rounded-[4px] bg-gray-50 px-3 py-2.5 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+          className="mb-3 flex w-full items-center gap-3 rounded-[8px] bg-gray-50 px-3 py-2.5 hover:bg-gray-100 active:bg-gray-200 transition-colors"
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-rose-50 text-rose-600">
             <Icon name="gauge" className="h-4 w-4" />

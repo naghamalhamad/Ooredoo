@@ -35,7 +35,7 @@ export default function HomeDetailsModal({ onCancel, onDoorOpen, onDoorClosed }:
             type="button"
             onClick={() => setStatus('open')}
             aria-pressed={status === 'open'}
-            className={`flex flex-col items-center gap-2 rounded-[4px] border px-3 py-4 transition-colors ${
+            className={`flex flex-col items-center gap-2 rounded-[8px] border px-3 py-4 transition-colors ${
               status === 'open'
                 ? 'border-rose-600 bg-rose-50 text-rose-600'
                 : 'border-gray-200 text-gray-700 hover:bg-gray-50'
@@ -48,7 +48,7 @@ export default function HomeDetailsModal({ onCancel, onDoorOpen, onDoorClosed }:
             type="button"
             onClick={() => setStatus('closed')}
             aria-pressed={status === 'closed'}
-            className={`flex flex-col items-center gap-2 rounded-[4px] border px-3 py-4 transition-colors ${
+            className={`flex flex-col items-center gap-2 rounded-[8px] border px-3 py-4 transition-colors ${
               status === 'closed'
                 ? 'border-rose-600 bg-rose-50 text-rose-600'
                 : 'border-gray-200 text-gray-700 hover:bg-gray-50'
@@ -60,11 +60,11 @@ export default function HomeDetailsModal({ onCancel, onDoorOpen, onDoorClosed }:
         </div>
 
         <p className="mb-2 mt-4 text-sm font-semibold text-gray-900">Home Capture</p>
-        <div className="rounded-[4px] border border-gray-200 p-3">
+        <div className="rounded-[8px] border border-gray-200 p-3">
           {captured ? (
             <div>
               <div className="relative inline-flex">
-                <div className="flex h-16 w-20 items-center justify-center rounded-[4px] bg-gray-100 text-gray-400">
+                <div className="flex h-16 w-20 items-center justify-center rounded-[8px] bg-gray-100 text-gray-400">
                   <Icon name="camera" className="h-6 w-6" />
                 </div>
                 <button

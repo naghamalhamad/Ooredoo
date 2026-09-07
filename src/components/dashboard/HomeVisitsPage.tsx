@@ -15,7 +15,7 @@ function SearchFilterBar() {
         <input
           type="text"
           placeholder="Search"
-          className="h-11 w-full rounded-[4px] bg-gray-100 pl-3 pr-9 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-300"
+          className="h-11 w-full rounded-[8px] bg-gray-100 pl-3 pr-9 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-300"
         />
         <Icon name="search" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
       </div>
@@ -47,7 +47,7 @@ export default function HomeVisitsPage({ homeVisits, onBack, onStartHomeVisit }:
 
       {isEmpty ? (
         <div className="flex flex-1 flex-col items-center justify-center gap-2 px-4">
-          <span className="flex h-9 w-9 items-center justify-center rounded-[4px] bg-white text-gray-400">
+          <span className="flex h-9 w-9 items-center justify-center rounded-[8px] bg-white text-gray-400">
             <Icon name="info" className="h-5 w-5" />
           </span>
           <p className="text-sm font-semibold text-gray-900">No Home Visit</p>

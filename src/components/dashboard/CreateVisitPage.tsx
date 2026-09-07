@@ -16,7 +16,7 @@ function TextField({ label, placeholder }: { label: string; placeholder: string 
       <input
         type="text"
         placeholder={placeholder}
-        className="w-full rounded-[4px] bg-gray-100 px-3 py-2.5 text-sm font-semibold text-gray-900 placeholder:font-semibold placeholder:text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
+        className="w-full rounded-[8px] bg-gray-100 px-3 py-2.5 text-sm font-semibold text-gray-900 placeholder:font-semibold placeholder:text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
       />
     </label>
   )
@@ -29,7 +29,7 @@ function SelectField({ label, placeholder }: { label: string; placeholder: strin
       <div className="relative">
         <select
           defaultValue=""
-          className="w-full appearance-none rounded-[4px] bg-gray-100 px-3 py-2.5 text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
+          className="w-full appearance-none rounded-[8px] bg-gray-100 px-3 py-2.5 text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
         >
           <option value="" disabled>
             {placeholder}
@@ -55,7 +55,7 @@ function DateField({ label, initialValue }: { label: string; initialValue: strin
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="w-full rounded-[4px] bg-gray-100 px-3 py-2.5 text-left text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
+          className="w-full rounded-[8px] bg-gray-100 px-3 py-2.5 text-left text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
         >
           {value}
         </button>

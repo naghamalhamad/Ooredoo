@@ -24,7 +24,7 @@ function GrayField({ label, value, disabled }: { label: string; value: string; d
         type="text"
         defaultValue={value}
         disabled={disabled}
-        className="w-full rounded-[4px] bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
+        className="w-full rounded-[8px] bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
       />
     </label>
   )
@@ -38,7 +38,7 @@ function GraySelectField({ label, value, disabled }: { label: string; value: str
         <select
           defaultValue={value}
           disabled={disabled}
-          className="w-full appearance-none rounded-[4px] bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
+          className="w-full appearance-none rounded-[8px] bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
         >
           <option value={value}>{value}</option>
         </select>
@@ -65,13 +65,13 @@ function GrayDateField({ label, value, disabled }: { label: string; value: strin
             value={current}
             readOnly
             disabled
-            className="w-full rounded-[4px] bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
+            className="w-full rounded-[8px] bg-gray-200 px-3 py-2.5 text-sm font-semibold text-gray-900 disabled:cursor-not-allowed"
           />
         ) : (
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="w-full rounded-[4px] bg-gray-200 px-3 py-2.5 text-left text-sm font-semibold text-gray-900"
+            className="w-full rounded-[8px] bg-gray-200 px-3 py-2.5 text-left text-sm font-semibold text-gray-900"
           >
             {current}
           </button>
@@ -134,7 +134,7 @@ export default function AreaVisitDetailsPage({
         </span>
 
         {showCompletedBadge && (
-          <div className="mt-4 flex items-center gap-2 rounded-[4px] bg-emerald-50 px-3 py-2.5">
+          <div className="mt-4 flex items-center gap-2 rounded-[8px] bg-emerald-50 px-3 py-2.5">
             <Icon name="checkCircle" className="h-4 w-4 flex-shrink-0 text-emerald-600" />
             <span className="flex-1 text-sm font-medium text-emerald-600">Completed Home Visits</span>
             <span className="text-sm font-semibold text-emerald-600">{visit.completedHomeVisits}</span>
@@ -158,7 +158,7 @@ export default function AreaVisitDetailsPage({
         </div>
 
         <p className="mb-3 mt-6 text-sm font-semibold text-gray-900">Location Details</p>
-        <div className="divide-y divide-gray-100 rounded-[4px] bg-white">
+        <div className="divide-y divide-gray-100 rounded-[8px] bg-white">
           <LocationRow label="Region" value={visit.region} />
           <LocationRow label="Wilaya" value={visit.wilaya} />
           <LocationRow label="locality" value={visit.locality} />
@@ -180,8 +180,8 @@ export default function AreaVisitDetailsPage({
             </div>
 
             {visit.homeVisits.length === 0 ? (
-              <div className="flex flex-col items-center gap-2 rounded-[4px] bg-gray-50 px-4 py-6 text-center">
-                <span className="flex h-9 w-9 items-center justify-center rounded-[4px] bg-white text-gray-400">
+              <div className="flex flex-col items-center gap-2 rounded-[8px] bg-gray-50 px-4 py-6 text-center">
+                <span className="flex h-9 w-9 items-center justify-center rounded-[8px] bg-white text-gray-400">
                   <Icon name="info" className="h-5 w-5" />
                 </span>
                 <p className="text-xs text-gray-400">press the button below to Add Home Visit</p>
@@ -200,7 +200,7 @@ export default function AreaVisitDetailsPage({
                 <button
                   type="button"
                   onClick={onAddHomeVisit}
-                  className="flex items-center justify-center gap-1.5 rounded-[4px] bg-white py-3 text-sm font-semibold text-rose-600 hover:bg-gray-50 transition-colors"
+                  className="flex items-center justify-center gap-1.5 rounded-[8px] bg-white py-3 text-sm font-semibold text-rose-600 hover:bg-gray-50 transition-colors"
                 >
                   <Icon name="plus" className="h-4 w-4" />
                   Start New Home Visit

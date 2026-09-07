@@ -23,7 +23,7 @@ function DateField({ label, value, onChange }: { label: string; value: string; o
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="w-full rounded-[4px] bg-gray-100 px-3 py-2.5 text-left text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
+          className="w-full rounded-[8px] bg-gray-100 px-3 py-2.5 text-left text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
         >
           {value}
         </button>
@@ -59,7 +59,7 @@ function SelectField({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full appearance-none rounded-[4px] bg-gray-100 px-3 py-2.5 text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
+        className="w-full appearance-none rounded-[8px] bg-gray-100 px-3 py-2.5 text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-300"
       >
         <option value="">{placeholder}</option>
         {options.map((option) => (

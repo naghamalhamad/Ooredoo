@@ -25,8 +25,8 @@ function StatTile({
   value: string
 }) {
   return (
-    <div className="rounded-[4px] bg-gray-50 p-3">
-      <span className={`flex h-9 w-9 items-center justify-center rounded-[4px] ${iconBg} ${iconColor}`}>
+    <div className="rounded-[8px] bg-gray-50 p-3">
+      <span className={`flex h-9 w-9 items-center justify-center rounded-[8px] ${iconBg} ${iconColor}`}>
         <Icon name={icon} className="h-4 w-4" />
       </span>
       <p className="mt-2 text-xs text-gray-400">{label}</p>
@@ -49,8 +49,8 @@ function InsightRow({
   subtitle: string
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-[4px] bg-gray-50 px-3 py-3">
-      <span className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-[4px] ${iconBg} ${iconColor}`}>
+    <div className="flex items-center gap-3 rounded-[8px] bg-gray-50 px-3 py-3">
+      <span className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-[8px] ${iconBg} ${iconColor}`}>
         <Icon name={icon} className="h-4 w-4" />
       </span>
       <div>
@@ -104,7 +104,7 @@ export default function VisitsDashboardPage({ filters, onBack, onOpenFilters, on
         <Card>
           <h2 className="mb-3 text-base font-semibold text-gray-900">Customers Visit Management</h2>
 
-          <div className="flex items-center gap-3 rounded-[4px] bg-gray-50 px-3 py-3">
+          <div className="flex items-center gap-3 rounded-[8px] bg-gray-50 px-3 py-3">
             <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-600">
               <Icon name="mapPin" className="h-4 w-4" />
             </span>
@@ -150,8 +150,8 @@ export default function VisitsDashboardPage({ filters, onBack, onOpenFilters, on
               />
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center gap-2 rounded-[4px] bg-gray-50 px-4 py-8 text-center">
-              <span className="flex h-9 w-9 items-center justify-center rounded-[4px] bg-rose-50 text-rose-600">
+            <div className="flex flex-col items-center justify-center gap-2 rounded-[8px] bg-gray-50 px-4 py-8 text-center">
+              <span className="flex h-9 w-9 items-center justify-center rounded-[8px] bg-rose-50 text-rose-600">
                 <Icon name="hourglass" className="h-5 w-5" />
               </span>
               <p className="text-sm font-semibold text-gray-900">No insights yet</p>
